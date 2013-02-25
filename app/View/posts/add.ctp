@@ -1,4 +1,4 @@
-<?php if ($current_user['roles'] == 'admin') : ?>
+
 
 <div class="posts form">
 <?php echo $this->Form->create('Post',array(
@@ -27,4 +27,3 @@
 <?php echo $this->Form->end(__('Submit')); ?>
 </div>
 
-<?php endif ?>

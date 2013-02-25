@@ -152,4 +152,17 @@ class PostsController extends AppController {
 		$this->Session->setFlash(__('Post was not deleted'));
 		$this->redirect(array('action' => 'index'));
 	}
-   }
+ 
+
+
+public function isAuthorized($user) {
+
+	if (in_array($this->action, array('add', 'edit', 'delete')) && $user['roles'] == 'admin') {
+		return true;
+			}else{
+		return false;
+}
+
+	  }
+
+  }

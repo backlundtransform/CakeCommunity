@@ -25,7 +25,7 @@
  
 <div class="eMessage">
 
-		<?php echo h($post['Post']['content']); ?>
+		<?php echo $post['Post']['content']; ?>
 		
 		
 		</div></div>

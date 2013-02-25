@@ -1,4 +1,4 @@
-<?php if ($current_user['roles'] == 'admin') : ?>
+
 <div class="posts form">
 <?php echo $this->Form->create('Post',array(
              'inputDefaults' => array(
@@ -19,4 +19,3 @@
 </div>
 
 
-<?php endif ?>

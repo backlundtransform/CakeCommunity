@@ -6,7 +6,7 @@
 
  <div class="eTitle" style="text-align: left;"> <?php echo h($post['Post']['title']); ?>
  </div><div class="eMessage" style="text-align: left; clear: both; padding-top: 2px; padding-bottom: 2px;">
-      <?php echo h($post['Post']['content']); ?>
+      <?php echo $post['Post']['content']; ?>
  <div class="eDetails" style="clear: both;">
 Views: <?php echo $post['Post']['views']; ?> | Added by: <?php echo $this->Html->link($post['User']['name'], array('controller' => 'users', 'action' => 'view', $post['User']['id'])); ?> | Creation time:   <?php echo $post['Post']['created']; ?>
 
