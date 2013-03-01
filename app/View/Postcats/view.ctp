@@ -1,10 +1,10 @@
-
+<br>
 <?php
 
 
 if ($current_user['roles'] == 'admin') {
 	    
-	echo $this->Html->link(__('Submit'), array('action' => 'add'));
+	echo $this->Html->link(__('Submit'), array('action' => 'add'), array('Class' => 'Buttons'));
  
    	}
 
@@ -29,7 +29,7 @@ if ($current_user['roles'] == 'admin') {
  
 <div class="eMessage"">
 
-		<?php echo h($post['content']); ?>
+		<?php echo $post['content']; ?>
 		
 		
 		</div></div>

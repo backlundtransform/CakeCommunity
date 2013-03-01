@@ -5,7 +5,6 @@ App::uses('AppController', 'Controller');
  *
  * @property Post $Post
  */
- 
 
 class PostsController extends AppController {
   
@@ -28,6 +27,8 @@ class PostsController extends AppController {
 	
      }
 	public function index() {
+		$this->ban_check();
+	
 		$this->Post->recursive = 0;
 
 
@@ -46,19 +47,13 @@ class PostsController extends AppController {
  * @return void
  */
 	public function view($id = null) {
-
-            $this->paginate = array('limit'=>5,
-			
+		$this->ban_check();
+    	$this->paginate = array('limit'=>5,
 			'conditions' => array('Comment.post_id' => $id)
+		);
 			
-			);
-			
-			$paginate = $this->paginate('Comment');
-			
-			
-
-
-	$this->Post->updateAll(array('views'=>'views+1'), array('Post.id'=>$id));
+		$paginate = $this->paginate('Comment');
+		$this->Post->updateAll(array('views'=>'views+1'), array('Post.id'=>$id));
 
 
 	if (!$this->Post->exists($id)) {
@@ -89,6 +84,7 @@ class PostsController extends AppController {
  * @return void
  */
 	public function add() {
+	$this->ban_check();
 		if ($this->request->is('post')) {
 			$this->Post->create();
 			if ($this->Post->save($this->request->data)) {
@@ -113,6 +109,7 @@ class PostsController extends AppController {
  * @return void
  */
 	public function edit($id = null) {
+		$this->ban_check();
 		if (!$this->Post->exists($id)) {
 			throw new NotFoundException(__('Invalid post'));
 		}
@@ -156,6 +153,9 @@ class PostsController extends AppController {
 
 
 public function isAuthorized($user) {
+	
+
+
 
 	if (in_array($this->action, array('add', 'edit', 'delete')) && $user['roles'] == 'admin') {
 		return true;

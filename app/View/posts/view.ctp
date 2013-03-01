@@ -76,7 +76,10 @@ Views: <?php echo $post['Post']['views']; ?> | Added by: <?php echo $this->Html-
         'div' => false,
 
 
-    ))); ?>
+    ))); 
+    
+   
+  ?>
     
     
     
@@ -121,4 +124,3 @@ Views: <?php echo $post['Post']['views']; ?> | Added by: <?php echo $this->Html-
 </tr></table></td></tr>
 
 </div>      
-

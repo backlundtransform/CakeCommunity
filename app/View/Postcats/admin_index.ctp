@@ -1,8 +1,7 @@
-<?php if ($current_user['roles'] == 'admin') : ?>
 
 <div class="postcats index">
 	<h2><?php echo __('Postcats'); ?></h2>
-	<table cellpadding="0" cellspacing="0">
+	<table cellpadding="10" cellspacing="0">
 	<tr>
 			<th><?php echo $this->Paginator->sort('id'); ?></th>
 			<th><?php echo $this->Paginator->sort('name'); ?></th>
@@ -15,8 +14,8 @@
 		<td><?php echo h($postcat['Postcat']['name']); ?>&nbsp;</td>
 		<td><?php echo h($postcat['Postcat']['post_id']); ?>&nbsp;</td>
 		<td class="actions">
-			<?php echo $this->Html->link(__('View'), array('action' => 'view', $postcat['Postcat']['id'])); ?>
-			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $postcat['Postcat']['id'])); ?>
+			<?php echo $this->Html->link(__('View'), array('action' => 'view', 'admin' => false, $postcat['Postcat']['id'])); ?>
+			<?php echo $this->Html->link(__('Edit'), array('action' => 'admin_edit', $postcat['Postcat']['id'])); ?>
 			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $postcat['Postcat']['id']), null, __('Are you sure you want to delete # %s?', $postcat['Postcat']['id'])); ?>
 		</td>
 	</tr>
@@ -36,13 +35,6 @@
 	?>
 	</div>
 </div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('New Postcat'), array('action' => 'add')); ?></li>
-		<li><?php echo $this->Html->link(__('List Posts'), array('controller' => 'posts', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Post'), array('controller' => 'posts', 'action' => 'add')); ?> </li>
-	</ul>
-</div>
+<br>
+		<?php echo $this->Html->link(__('New Postcat'), array('action' => 'add')); ?>
 
-<?php endif ?>

@@ -16,6 +16,7 @@ class PostcatsController extends AppController {
  */
  
  public function index() {
+ 	$this->ban_check();
 			$this->Postcat->recursive = 0;
 		
 		$this->set('postcats', $this->paginate());
@@ -40,6 +41,7 @@ class PostcatsController extends AppController {
  * @return void
  */
 	public function view($id = null) {
+		$this->ban_check();
            $this->paginate = array('order' => 'created DESC');
 		if (!$this->Postcat->exists($id)) {
 			throw new NotFoundException(__('Invalid postcat'));
@@ -116,4 +118,19 @@ class PostcatsController extends AppController {
 		$this->Session->setFlash(__('Postcat was not deleted'));
 		$this->redirect(array('action' => 'index'));
 	}
+
+
+
+	public function isAuthorized($user) {
+		if (in_array($this->action, array('admin_index', 'admin_add', 'admin_edit', 'admin_delete')) && $user['roles'] == 'admin')
+		{
+			return true;
+		}
+			else
+		{
+			return false;
+		}
+	}
+
 }
+

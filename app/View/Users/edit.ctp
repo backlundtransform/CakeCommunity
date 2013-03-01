@@ -9,7 +9,7 @@
 
                 <?php if ($current_user['roles'] == 'admin'): ?>
 	
-		<?php 	echo $this->Form->input('roles',  array('type' => 'select', 'options' => array( 'key1' => 'admin', 'key2' => 'regular' ))); ?>
+		<?php 	echo $this->Form->input('roles',  array('type' => 'select', 'options' => array( 'admin' => 'admin', 'checked' => 'checked', 'user' => 'user', 'banned' => 'banned' ))); ?>
 		<?php endif; ?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

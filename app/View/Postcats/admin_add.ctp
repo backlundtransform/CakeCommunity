@@ -1,4 +1,4 @@
-<?php if ($current_user['roles'] == 'admin') : ?>
+
 
 <div class="postcats form">
 <?php echo $this->Form->create('Postcat'); ?>
@@ -20,4 +20,3 @@
 		<li><?php echo $this->Html->link(__('New Post'), array('controller' => 'posts', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
-<?php endif ?>

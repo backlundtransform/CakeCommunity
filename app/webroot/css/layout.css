@@ -33,9 +33,20 @@ color:#E4FAFD;
 }
 
 .tables {
-    background-image: -moz-linear-gradient(center top , #AEC7E5, #566E86);
-    background-position: left top;
-    background-repeat: repeat-x;
+    background-image: linear-gradient(bottom, rgb(174,199,229) 16%, rgb(86,110,134) 63%, rgb(174,199,229) 91%);
+background-image: -o-linear-gradient(bottom, rgb(174,199,229) 16%, rgb(86,110,134) 63%, rgb(174,199,229) 91%);
+background-image: -moz-linear-gradient(bottom, rgb(174,199,229) 16%, rgb(86,110,134) 63%, rgb(174,199,229) 91%);
+background-image: -webkit-linear-gradient(bottom, rgb(174,199,229) 16%, rgb(86,110,134) 63%, rgb(174,199,229) 91%);
+background-image: -ms-linear-gradient(bottom, rgb(174,199,229) 16%, rgb(86,110,134) 63%, rgb(174,199,229) 91%);
+
+background-image: -webkit-gradient(
+	linear,
+	left bottom,
+	left top,
+	color-stop(0.16, rgb(174,199,229)),
+	color-stop(0.63, rgb(86,110,134)),
+	color-stop(0.91, rgb(174,199,229))
+);
     color: #000000;
     font-size: 9pt;
     font-weight: bold;
@@ -200,6 +211,32 @@ background-image: -webkit-linear-gradient(top, #8e909e, #4f5268); background-ima
  
 }
  
+ a.Buttons {font-size:8pt; 
+position:relative;
+ 
+display:inline-block;
+
+text-align:center;
+cursor:pointer;
+border:2px solid #999;
+background-color:#666;
+-moz-border-radius:5px;
+-webkit-border-radius:5px;
+-opera-border-radius:5px;
+-khtml-border-radius:5px;
+border-radius:5px;
+color:#fff;
+font-weight:bold;
+text-shadow:1px 1px 1px rgba(0,0,0,0.5);
+background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#8e909e), to(#4f5268));
+background-image: -webkit-linear-gradient(top, #8e909e, #4f5268); background-image: -moz-linear-gradient(top, #8e909e, #4f5268); 
+ background-image: -ms-linear-gradient(top, #8e909e, #4f5268); background-image: -o-linear-gradient(top, #8e909e, #4f5268);
+ text-decoration:none;
+ height:  15px;
+ width:  75px;
+
+}
+
 
 
 
@@ -211,7 +248,151 @@ background-image: -webkit-linear-gradient(top, #8e909e, #4f5268); background-ima
 
 
 
+#userbar{
+ display: block;
+ font-family: arial,verdana,sans-serif;
+background-image: linear-gradient(bottom, rgb(165,172,179) 19%, rgb(151,170,184) 55%, rgb(175,183,199) 87%);
+background-image: -o-linear-gradient(bottom, rgb(165,172,179) 19%, rgb(151,170,184) 55%, rgb(175,183,199) 87%);
+background-image: -moz-linear-gradient(bottom, rgb(165,172,179) 19%, rgb(151,170,184) 55%, rgb(175,183,199) 87%);
+background-image: -webkit-linear-gradient(bottom, rgb(165,172,179) 19%, rgb(151,170,184) 55%, rgb(175,183,199) 87%);
+background-image: -ms-linear-gradient(bottom, rgb(165,172,179) 19%, rgb(151,170,184) 55%, rgb(175,183,199) 87%);
 
+background-image: -webkit-gradient(
+	linear,
+	left bottom,
+	left top,
+	color-stop(0.19, rgb(165,172,179)),
+	color-stop(0.55, rgb(151,170,184)),
+	color-stop(0.87, rgb(175,183,199))
+);
+ font-size: 10px;
+ font-weight: bold; 
+ width:100%;
+ height:38px;
+position: fixed;
+ top 0;
+ right:  0;
+ border: inset 2px #000;
+ margin-top: -24px;
+  font-size: 12px;
+  
+ 
+ 
+ 
+}
+
+#userbar li {
+ display: block;
+ padding-left:10px;
+  padding-right:10px;
+   padding-top:2px;
+  padding-bottom:2px;
+ margin-top: 0px;
+ float: left;
+ color:#000;
+
+ white-space: nowrap;
+ width: auto;
+ 
+ 
+
+}
+
+#userbar li a {
+ background-color: inherit;
+ color: #000000;
+ text-decoration: none;
+ 
+ 
+}
+
+#userbar li ul {
+ background-color: #bbb;
+ border: inset 1px #000;
+ color:#00000;
+ display: none;
+ padding: 0px;
+ position: absolute;
+ width: 160px;
+ 
+
+ 
+ 
+}
+
+#userbar li:hover {
+display: block;
+padding-top 10px;
+ background-image: linear-gradient(bottom, rgb(165,172,179) 19%, rgb(175,198,214) 55%, rgb(227,235,250) 87%);
+background-image: -o-linear-gradient(bottom, rgb(165,172,179) 19%, rgb(175,198,214) 55%, rgb(227,235,250) 87%);
+background-image: -moz-linear-gradient(bottom, rgb(165,172,179) 19%, rgb(175,198,214) 55%, rgb(227,235,250) 87%);
+background-image: -webkit-linear-gradient(bottom, rgb(165,172,179) 19%, rgb(175,198,214) 55%, rgb(227,235,250) 87%);
+background-image: -ms-linear-gradient(bottom, rgb(165,172,179) 19%, rgb(175,198,214) 55%, rgb(227,235,250) 87%);
+
+background-image: -webkit-gradient(
+	linear,
+	left bottom,
+	left top,
+	color-stop(0.19, rgb(165,172,179)),
+	color-stop(0.55, rgb(175,198,214)),
+	color-stop(0.87, rgb(227,235,250))
+);
+ color:#00000;
+ height: 20px;
+
+  border: inset 1px #000;
+  border-radius:5px;
+-moz-border-radius:5px; 
+ 
+  
+}
+
+#userbar  li:hover ul {
+ display: block; text-decoration: none;
+ 
+}
+
+#userbar  li li {
+ display: block;
+ padding: 0px;
+ width: 95%;
+ margin:1px 1px 1px 1px; 
+ 
+}
+
+#userbar  li li:hover {
+background-image: linear-gradient(bottom, rgb(165,172,179) 19%, rgb(175,198,214) 55%, rgb(227,235,250) 87%);
+background-image: -o-linear-gradient(bottom, rgb(165,172,179) 19%, rgb(175,198,214) 55%, rgb(227,235,250) 87%);
+background-image: -moz-linear-gradient(bottom, rgb(165,172,179) 19%, rgb(175,198,214) 55%, rgb(227,235,250) 87%);
+background-image: -webkit-linear-gradient(bottom, rgb(165,172,179) 19%, rgb(175,198,214) 55%, rgb(227,235,250) 87%);
+background-image: -ms-linear-gradient(bottom, rgb(165,172,179) 19%, rgb(175,198,214) 55%, rgb(227,235,250) 87%);
+
+background-image: -webkit-gradient(
+	linear,
+	left bottom,
+	left top,
+	color-stop(0.19, rgb(165,172,179)),
+	color-stop(0.55, rgb(175,198,214)),
+	color-stop(0.87, rgb(227,235,250))
+);
+ color:#00000;
+ text-decoration: none;
+ margin:1px 1px 1px 1px; 
+ font-size: 11px;
+ font-weight: bold;
+ 
+ 
+ }
+
+#userbar  li li a {
+ background-color: inherit;
+ border: 0px;
+ color:#00000;
+ display: block;
+ font-size: 11px;
+ font-weight: normal;
+padding: 4px 10px 4px 10px;
+}
 
 
 

@@ -2,6 +2,7 @@
 class MessagesController extends AppController {
 
     public function inbox() {
+$this->ban_check();
         $messages = $this->Message->find('all', array(
             'conditions' => array(
                 'recipient' => $this->Auth->user('name')
@@ -22,7 +23,8 @@ class MessagesController extends AppController {
     }
     
     public function view($id = null) {
-
+    	
+$this->ban_check();
                    $messages = $this->Message->find('all', array(
             'conditions' => array(
                 'Message.id' => $id
@@ -41,6 +43,7 @@ class MessagesController extends AppController {
 	$this->Message->updateAll(array('read'=> true ), array('Message.id'=>$id));
     }
     public function outbox() {
+ $this->ban_check();
         $messages = $this->Message->find('all', array(
             'conditions' => array(
                 'sender_id' => $this->Auth->user('id')
@@ -49,6 +52,7 @@ class MessagesController extends AppController {
     }
 
     public function compose() {
+  $this->ban_check();
         if ($this->request->is('post')) {
             $this->request->data['Message']['sender_id'] = $this->Auth->user('id');
 
@@ -61,4 +65,6 @@ class MessagesController extends AppController {
         }
 
     }
+	
+	
 }
