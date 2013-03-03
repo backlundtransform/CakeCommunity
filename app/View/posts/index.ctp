@@ -2,7 +2,7 @@
 
 <?php  if ($current_user['roles'] == 'admin') {
 	    
-	echo $this->Html->link(__('Submit'), array('action' => 'add'));
+	echo $this->Html->link(__('Submit'), array('action' => 'add'), array('Class' => 'Buttons'));
  
    	}
 
@@ -25,7 +25,7 @@
  
 <div class="eMessage">
 
-		<?php echo h($post['Post']['content']); ?>
+		<?php echo $post['Post']['content']; ?>
 		
 		
 		</div></div>

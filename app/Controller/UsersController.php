@@ -23,12 +23,19 @@ class UsersController extends AppController {
      }
 	 
 	 
+
+
      public function isAuthorized($user) {
-     	$this->role = $user['roles'];
+     	
+		
+	
 		
 	    if ($user['roles'] == 'admin') {
 	        return true;
 	    }
+		
+		
+		
 		
 		
 	    if (in_array($this->action, array('edit', 'delete'))) {
@@ -53,7 +60,11 @@ class UsersController extends AppController {
              }else{
                
                   $this->Session->setFlash('Your username/password combination was incorrect');
-             }
+			
+            
+            $this->redirect(array('controller' => 'users', 'action' => 'login', 'admin'=> false));
+        }
+          
 
           }
         }
@@ -140,12 +151,16 @@ class UsersController extends AppController {
  * @return void
  */
 	public function edit($id = null) {
+		
 		if (!$this->User->exists($id)) {
 			throw new NotFoundException(__('Invalid user'));
 		}
 		if ($this->request->is('post') || $this->request->is('put')) {
+			
+		
 			if ($this->User->save($this->request->data)) {
 				$this->Session->setFlash(__('The user has been saved'));
+				
 				$this->redirect(array('action' => 'index'));
 			} else {
 				$this->Session->setFlash(__('The user could not be saved. Please, try again.'));
@@ -154,6 +169,7 @@ class UsersController extends AppController {
 			$options = array('conditions' => array('User.' . $this->User->primaryKey => $id));
 			$this->request->data = $this->User->find('first', $options);
 		}
+		
 	}
 
 /**

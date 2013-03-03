@@ -33,24 +33,45 @@ App::uses('Sanitize', 'Utility');
  * @link http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
 class AppController extends Controller {
+ 
+  public function ban_check(){
+  	if($this->is_banned())
+		exit("You are banned");
+  }
+  
+  
+  public function is_banned()
+  {
+  	$usercheck = $this->Auth->user();
+	if($usercheck['roles'] == 'banned')
+  		return true;
+	return false;
+ }
+  
   
 var $helpers = array('Form', 'Html', 'Js', 'Time');
   public $components = array(
          'Session',
          'Auth' =>array(
-                'loginRedirect'=>array('controller' => 'users', 'action'=>'index'),
-                'logoutRedirect'=>array('controller' => 'users', 'action'=>'index'),
+                'loginRedirect'=>array('controller' => 'users', 'action'=>'index', 'admin' =>false ),
+                'logoutRedirect'=>array('controller' => 'users', 'action'=>'index', 'admin' =>false ),
                 'authError'=>"You can't access that page" ,
-                'authorize'=>array('Controller')
+                'authErrorRedirect' => array('controller' => 'posts', 'action' => 'index', 'admin' =>false ),
+                'authorize'=>array('controller')
          )
   ); 
-  public function isAuthorized($user){
-              return true;
-  }
+  public function isAuthorized($user)
+  {
+  
+      return true;
+}
    public function beforeFilter(){
-              $this->Auth->allow('index', 'view');
+   		
+              $this->Auth->allow('index', 'view', 'main_view');
               $this->set('logged_in', $this->Auth->loggedIn());
-        $this->set('current_user', $this->Auth->user());
+        	$this->set('current_user', $this->Auth->user());
+			
+		
         
 		
        

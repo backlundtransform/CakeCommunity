@@ -1,14 +1,14 @@
-
+<br>
 <?php
 
 
 if ($current_user['roles'] == 'admin') {
 	    
-	echo $this->Html->link(__('Submit'), array('action' => 'add'));
+	echo $this->Html->link(__('Submit'), array('controller'=> 'Posts', 'action' => 'add'), array('Class' => 'Buttons'));
  
    	}
 
- ?> 
+ ?>
 	<?php if (!empty($postcat['Post'])): ?>
 
 	<?php
@@ -21,15 +21,15 @@ if ($current_user['roles'] == 'admin') {
 
 
  
- <?php echo $this->Html->link($post['title'], array('action' => 'view', $post['id'])); ?>
+ <?php echo $this->Html->link($post['title'], array('controller'=> 'Posts', 'action' => 'view', 'admin' => false, $post['id'])); ?>
         <span class="commentbubble"> <?php echo $this->Html->link(count($commentnumber), array('controller'=> 'Posts','action' => 'view', $post['id'])); ?>
 
 
 </span></div>
  
-<div class="eMessage"">
+<div class="eMessage">
 
-		<?php echo h($post['content']); ?>
+		<?php echo $post['content']; ?>
 		
 		
 		</div></div>

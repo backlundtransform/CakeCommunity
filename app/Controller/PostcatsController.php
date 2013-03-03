@@ -16,20 +16,35 @@ class PostcatsController extends AppController {
  */
  
  public function index() {
-			$this->Postcat->recursive = 0;
-		
-		$this->set('postcats', $this->paginate());
-		return   $this->Postcat->find('all');
+ 	$this->ban_check();
+
+
+		$Categorylist = $this->Postcat->children();
+
+	                $this->set(compact('Categorylist'));
+
+
+            	return  $Categorylist;
 		
 	}
 	public function admin_index() {
-			$this->Postcat->recursive = 0;
+
 		
-		$this->set('postcats', $this->paginate());
-		return   $this->Postcat->find('all');
+
+
+
+
+			$Categorylist = $this->Postcat->children();
+
+	                $this->set(compact('Categorylist'));
+
+                       return  $Categorylist;
+
 		
+
+
 	}
-	
+
 
 
 /**
@@ -39,12 +54,19 @@ class PostcatsController extends AppController {
  * @param string $id
  * @return void
  */
+ 
+ 
+
 	public function view($id = null) {
+		$this->ban_check();
            $this->paginate = array('order' => 'created DESC');
 		if (!$this->Postcat->exists($id)) {
 			throw new NotFoundException(__('Invalid postcat'));
+
 			
 		}
+		
+
 		
 		$addedby =  $this->Postcat->Post->find('all', array('conditions' => array('cat' => $id)));
 		$this->set(compact('addedby'));
@@ -53,6 +75,31 @@ class PostcatsController extends AppController {
 		$this->set('postcat', $this->Postcat->find('first', $options));
 	
 	}
+	
+	public function main_view($id = null) {
+		$this->ban_check();
+           $this->paginate = array('order' => 'created DESC');
+		if (!$this->Postcat->exists($id)) {
+			throw new NotFoundException(__('Invalid postcat'));
+
+			
+		}
+                    $postcat = $this->Postcat->Post->find('all', array('conditions' => array(
+                        
+                        'OR' => array(
+            array('postcat.parent_id' => $id),
+            array('post.id' => $id),
+                        
+                        ))));
+                   	$this->set(compact('postcat'));
+
+		
+
+	
+	}
+	
+	
+
 
 /**
  * add method
@@ -60,15 +107,19 @@ class PostcatsController extends AppController {
  * @return void
  */
 	public function admin_add() {
-		if ($this->request->is('post')) {
-			$this->Postcat->create();
-			if ($this->Postcat->save($this->request->data)) {
-				$this->Session->setFlash(__('The postcat has been saved'));
-				$this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The postcat could not be saved. Please, try again.'));
-			}
-		}
+	 if (!empty($this->data)) {
+            $this->Postcat->save($this->data);
+            $this->redirect(array('action'=>'index'));
+        } else {
+            $parents[0] = "[ No Parent ]";
+            $Categorylist = $this->Postcat->generateTreeList(null, null, null," _ ");
+            if($Categorylist){
+                foreach ($Categorylist as $key=>$value){
+                    $parents[$key] = $value;
+		    }
+		$this->set(compact('parents'));
+	    }
+        }
 	}
 
 /**
@@ -79,20 +130,20 @@ class PostcatsController extends AppController {
  * @return void
  */
 	public function admin_edit($id = null) {
-		if (!$this->Postcat->exists($id)) {
-			throw new NotFoundException(__('Invalid postcat'));
-		}
-		if ($this->request->is('post') || $this->request->is('put')) {
-			if ($this->Postcat->save($this->request->data)) {
-				$this->Session->setFlash(__('The postcat has been saved'));
-				$this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The postcat could not be saved. Please, try again.'));
-			}
-		} else {
-			$options = array('conditions' => array('Postcat.' . $this->Postcat->primaryKey => $id));
-			$this->request->data = $this->Postcat->find('first', $options);
-		}
+	 if (!empty($this->data)) {
+            if($this->Category->save($this->data)==false)
+                $this->Session->setFlash('Error saving Category.');
+            $this->redirect(array('action'=>'index'));
+        } else {
+            if($id==null) die("No ID received");
+            $this->data = $this->Postcat->read(null, $id);
+            $parents[0] = "[ No Parent ]";
+            $Categorylist = $this->Postcat->generateTreeList(null, null, null," _ ");
+            if($Categorylist) 
+                foreach ($Categorylist as $key=>$value)
+                    $parents[$key] = $value;
+            $this->set(compact('parents'));
+        }
 	}
 
 /**
@@ -104,16 +155,24 @@ class PostcatsController extends AppController {
  * @return void
  */
 	public function admin_delete($id = null) {
-		$this->Postcat->id = $id;
-		if (!$this->Postcat->exists()) {
-			throw new NotFoundException(__('Invalid postcat'));
-		}
-		$this->request->onlyAllow('post', 'delete');
-		if ($this->Postcat->delete()) {
-			$this->Session->setFlash(__('Postcat deleted'));
-			$this->redirect(array('action' => 'index'));
-		}
-		$this->Session->setFlash(__('Postcat was not deleted'));
-		$this->redirect(array('action' => 'index'));
+	  if($id==null)
+            die("No ID received");
+        $this->Category->id=$id;
+        if($this->Category->delete()==false)
+            $this->Session->setFlash('The Category could not be deleted.');
+        $this->redirect(array('action'=>'index'));
 	}
-}
+
+
+
+	public function isAuthorized($user) {
+		if (in_array($this->action, array('admin_index', 'admin_add', 'admin_edit', 'admin_delete')) && $user['roles'] == 'admin')
+		{
+			return true;
+		
+		}else
+		{
+			return false;
+		}
+	}
+              }

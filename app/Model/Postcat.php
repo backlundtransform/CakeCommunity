@@ -5,8 +5,10 @@ App::uses('AppModel', 'Model');
  *
  * @property post $post
  */
-class Postcat extends AppModel {
+ 
 
+class Postcat extends AppModel {
+       public $actsAs = array('Tree');
 /**
  * Use table
  *

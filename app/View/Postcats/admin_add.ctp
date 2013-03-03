@@ -1,4 +1,4 @@
-<?php if ($current_user['roles'] == 'admin') : ?>
+
 
 <div class="postcats form">
 <?php echo $this->Form->create('Postcat'); ?>
@@ -6,7 +6,7 @@
 		<legend><?php echo __('Add Postcat'); ?></legend>
 	<?php
 		echo $this->Form->input('name');
-		echo $this->Form->input('post_id');
+		echo $this->Form->input('parent_id',array('label'=>'Parent'));
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>
@@ -20,4 +20,3 @@
 		<li><?php echo $this->Html->link(__('New Post'), array('controller' => 'posts', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
-<?php endif ?>

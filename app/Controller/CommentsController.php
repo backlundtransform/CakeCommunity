@@ -13,8 +13,11 @@ class CommentsController extends AppController {
  *
  * @return void
  */
-	public function index() {
-		$this->Comment->recursive = 0;
+	public function admin_index() {
+		
+		
+		$this->ban_check();
+	$this->Comment->recursive = 0;
 		$this->set('comments', $this->paginate());
 	}
 
@@ -25,7 +28,8 @@ class CommentsController extends AppController {
  * @param string $id
  * @return void
  */
-	public function view($id = null) {
+	public function admin_view($id = null) {
+		$this->ban_check();
 		if (!$this->Comment->exists($id)) {
 			throw new NotFoundException(__('Invalid comment'));
 		}
@@ -39,9 +43,9 @@ class CommentsController extends AppController {
  * @return void
  */
 	public function add() {
+		$this->ban_check();
 		
-		
-
+	
   if ($this->request->is('post')) {
   
   	$this->Comment->create();
@@ -112,12 +116,42 @@ class CommentsController extends AppController {
 		if (!$this->Comment->exists()) {
 			throw new NotFoundException(__('Invalid comment'));
 		}
-		$this->request->onlyAllow('post', 'delete');
+	
 		if ($this->Comment->delete()) {
 			$this->Session->setFlash(__('Comment deleted'));
-			$this->redirect(array('action' => 'index'));
+			$this->redirect($this->referer());
 		}
-		$this->Session->setFlash(__('Comment was not deleted'));
-		$this->redirect(array('action' => 'index'));
+
+		
 	}
+	
+	public function isAuthorized($user) {
+   
+    if ($this->action === 'add' && $user['roles'] != 'banned') {
+        return true;
+    }elseif (in_array($this->action, array('edit', 'delete', 'admin_index', 'admin_view')) && $user['roles'] == 'admin')
+		{
+			return true;
+		}
+			else
+		{
+			return false;
+		}
+	
+
+    
+    if (in_array($this->action, array('edit', 'delete'))) {
+        $commentId = $this->request->params['pass'][0];
+		if(isset($commentId) && isset($user['id']))
+		{
+      		if ($this->Comment->isOwnedBy($commentId, $user['id']))
+      		{
+				return true;
+			}
+        }
+		
+    }
+
+    return parent::isAuthorized($user);
+}
 }

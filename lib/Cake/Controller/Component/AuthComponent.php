@@ -177,6 +177,7 @@ class AuthComponent extends Component {
 	public $loginAction = array(
 		'controller' => 'users',
 		'action' => 'login',
+		'admin' => false,
 		'plugin' => null
 	);
 
