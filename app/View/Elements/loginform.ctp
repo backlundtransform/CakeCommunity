@@ -11,7 +11,11 @@
       echo $this->Form->end('login');
 
       
+<<<<<<< HEAD
       ?><br>
+=======
+      ?><br> <?php echo $this->Html->link('Login', array('controller'=>'users', 'action'=>'Login', 'admin'=> false)); ?> |
+>>>>>>> c2ebab6aa96e140f8808a1c0205ec7240c356d3b
 <?php echo $this->Html->link(__('Register'), array('controller' => 'users', 'action' => 'add', 'admin'=> false)); ?>
 
 

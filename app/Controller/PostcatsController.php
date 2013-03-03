@@ -17,6 +17,7 @@ class PostcatsController extends AppController {
  
  public function index() {
  	$this->ban_check();
+<<<<<<< HEAD
 
 
 		$Categorylist = $this->Postcat->children();
@@ -25,6 +26,12 @@ class PostcatsController extends AppController {
 
 
             	return  $Categorylist;
+=======
+			$this->Postcat->recursive = 0;
+		
+		$this->set('postcats', $this->paginate());
+		return   $this->Postcat->find('all');
+>>>>>>> c2ebab6aa96e140f8808a1c0205ec7240c356d3b
 		
 	}
 	public function admin_index() {
@@ -175,4 +182,23 @@ class PostcatsController extends AppController {
 			return false;
 		}
 	}
+<<<<<<< HEAD
               }
+=======
+
+
+
+	public function isAuthorized($user) {
+		if (in_array($this->action, array('admin_index', 'admin_add', 'admin_edit', 'admin_delete')) && $user['roles'] == 'admin')
+		{
+			return true;
+		}
+			else
+		{
+			return false;
+		}
+	}
+
+}
+
+>>>>>>> c2ebab6aa96e140f8808a1c0205ec7240c356d3b

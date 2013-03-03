@@ -4,7 +4,11 @@
 
 if ($current_user['roles'] == 'admin') {
 	    
+<<<<<<< HEAD
 	echo $this->Html->link(__('Submit'), array('controller'=> 'Posts', 'action' => 'add'), array('Class' => 'Buttons'));
+=======
+	echo $this->Html->link(__('Submit'), array('action' => 'add'), array('Class' => 'Buttons'));
+>>>>>>> c2ebab6aa96e140f8808a1c0205ec7240c356d3b
  
    	}
 
