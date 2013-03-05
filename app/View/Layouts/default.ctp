@@ -65,19 +65,11 @@
      </ul>
    </li>
   <?php if (isset($current_user['roles']) && $current_user['roles'] == 'admin'):?>
-<<<<<<< HEAD
  <li><?php echo $this->Html->link('Comment management', array('controller'=>'comments', 'action'=>'admin_index', 'admin'=>true)); ?></li>
  <li>
  Category management
   <ul>
   <li><?php echo $this->Html->link('Posts', array('controller'=>'postcats', 'action'=>'admin_index', 'admin'=>true)); ?> </li>
-=======
- <li><?php echo $this->Html->link('Comment management', array('controller'=>'postcats', 'admin'=>true)); ?></li>
- <li>
- Category management
-  <ul>
-  <li><?php echo $this->Html->link('Posts', array('controller'=>'postcats', 'admin'=>true)); ?> </li>
->>>>>>> c2ebab6aa96e140f8808a1c0205ec7240c356d3b
  </ul>
  </li>
  <?php endif ?>

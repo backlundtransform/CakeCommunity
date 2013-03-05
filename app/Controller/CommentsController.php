@@ -12,11 +12,31 @@ class CommentsController extends AppController {
  * index method
  *
  * @return void
+ 
+
  */
+ 
+   public function beforeFilter(){
+
+
+
+			parent::beforeFilter();
+
+
+       
+
+     }
+    public function index($id = null) {
+      $this->ban_check();
+       $comments = $this->Comment->find('all', array('conditions' => array('comment.user_id' => $id)));
+
+			return   $comments;
+                        
+                         }
 	public function admin_index() {
 		
 		
-		$this->ban_check();
+
 	$this->Comment->recursive = 0;
 		$this->set('comments', $this->paginate());
 	}
@@ -29,7 +49,7 @@ class CommentsController extends AppController {
  * @return void
  */
 	public function admin_view($id = null) {
-		$this->ban_check();
+
 		if (!$this->Comment->exists($id)) {
 			throw new NotFoundException(__('Invalid comment'));
 		}

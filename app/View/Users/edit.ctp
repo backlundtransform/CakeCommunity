@@ -5,7 +5,10 @@
 	<?php
 		echo $this->Form->input('id');
 		echo $this->Form->input('name');
-		echo $this->Form->input('username');    ?>
+		echo $this->Form->input('username');  
+                  echo $this->Form->input('Presentation', array('rows' => '15', 'cols' => '100', 'class'=>'ckeditor'));
+                
+                  ?>
 
                 <?php if ($current_user['roles'] == 'admin'): ?>
 	

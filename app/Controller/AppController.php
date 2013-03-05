@@ -66,16 +66,14 @@ var $helpers = array('Form', 'Html', 'Js', 'Time');
       return true;
 }
    public function beforeFilter(){
-   		
-<<<<<<< HEAD
-              $this->Auth->allow('index', 'view', 'main_view');
-=======
+     
+
+
               $this->Auth->allow('index', 'view');
->>>>>>> c2ebab6aa96e140f8808a1c0205ec7240c356d3b
               $this->set('logged_in', $this->Auth->loggedIn());
         	$this->set('current_user', $this->Auth->user());
 			
-		
+
         
 		
        

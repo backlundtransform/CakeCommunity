@@ -193,7 +193,7 @@ border-radius: 8px; min-height: 120px;}
 /* Post Form */
 
 
-button, a.Buttons {font-size:8pt;
+input[value=login], a.Buttons {font-size:8pt;
 position:relative;
  
 display:inline-block;
@@ -214,39 +214,10 @@ background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#8e909e), to(#4f
 background-image: -webkit-linear-gradient(top, #8e909e, #4f5268); background-image: -moz-linear-gradient(top, #8e909e, #4f5268); 
  background-image: -ms-linear-gradient(top, #8e909e, #4f5268); background-image: -o-linear-gradient(top, #8e909e, #4f5268);
  text-decoration:none;
- height:  15px;
+ 
  width:  75px;
 
 }
-<<<<<<< HEAD
-=======
- 
- a.Buttons {font-size:8pt; 
-position:relative;
- 
-display:inline-block;
-
-text-align:center;
-cursor:pointer;
-border:2px solid #999;
-background-color:#666;
--moz-border-radius:5px;
--webkit-border-radius:5px;
--opera-border-radius:5px;
--khtml-border-radius:5px;
-border-radius:5px;
-color:#fff;
-font-weight:bold;
-text-shadow:1px 1px 1px rgba(0,0,0,0.5);
-background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#8e909e), to(#4f5268));
-background-image: -webkit-linear-gradient(top, #8e909e, #4f5268); background-image: -moz-linear-gradient(top, #8e909e, #4f5268); 
- background-image: -ms-linear-gradient(top, #8e909e, #4f5268); background-image: -o-linear-gradient(top, #8e909e, #4f5268);
- text-decoration:none;
- height:  15px;
- width:  75px;
-
-}
->>>>>>> c2ebab6aa96e140f8808a1c0205ec7240c356d3b
 
 
 
@@ -362,7 +333,6 @@ background-image: -webkit-gradient(
  display: block; text-decoration: none;
  
 }
-<<<<<<< HEAD
 
 #userbar  li li {
  display: block;
@@ -396,41 +366,6 @@ background-image: -webkit-gradient(
  
  }
 
-=======
-
-#userbar  li li {
- display: block;
- padding: 0px;
- width: 95%;
- margin:1px 1px 1px 1px; 
- 
-}
-
-#userbar  li li:hover {
-background-image: linear-gradient(bottom, rgb(165,172,179) 19%, rgb(175,198,214) 55%, rgb(227,235,250) 87%);
-background-image: -o-linear-gradient(bottom, rgb(165,172,179) 19%, rgb(175,198,214) 55%, rgb(227,235,250) 87%);
-background-image: -moz-linear-gradient(bottom, rgb(165,172,179) 19%, rgb(175,198,214) 55%, rgb(227,235,250) 87%);
-background-image: -webkit-linear-gradient(bottom, rgb(165,172,179) 19%, rgb(175,198,214) 55%, rgb(227,235,250) 87%);
-background-image: -ms-linear-gradient(bottom, rgb(165,172,179) 19%, rgb(175,198,214) 55%, rgb(227,235,250) 87%);
-
-background-image: -webkit-gradient(
-	linear,
-	left bottom,
-	left top,
-	color-stop(0.19, rgb(165,172,179)),
-	color-stop(0.55, rgb(175,198,214)),
-	color-stop(0.87, rgb(227,235,250))
-);
- color:#00000;
- text-decoration: none;
- margin:1px 1px 1px 1px; 
- font-size: 11px;
- font-weight: bold;
- 
- 
- }
-
->>>>>>> c2ebab6aa96e140f8808a1c0205ec7240c356d3b
 #userbar  li li a {
  background-color: inherit;
  border: 0px;

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Värd: 127.0.0.1
--- Skapad: 24 feb 2013 kl 20:46
+-- Skapad: 05 mars 2013 kl 21:37
 -- Serverversion: 5.5.16
 -- PHP-version: 5.4.7
 
@@ -32,11 +32,10 @@ CREATE TABLE IF NOT EXISTS `comments` (
   `user_id` int(11) NOT NULL,
   `post_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=55 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=56 ;
 
 --
 
---
 -- Tabellstruktur `messages`
 --
 
@@ -48,22 +47,28 @@ CREATE TABLE IF NOT EXISTS `messages` (
   `body` text NOT NULL,
   `read` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 
---
 -- Tabellstruktur `postcat`
 --
 
 CREATE TABLE IF NOT EXISTS `postcat` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
-  `post_id` int(11) NOT NULL,
+  `parent_id` int(10) NOT NULL,
+  `lft` int(10) NOT NULL,
+  `rght` int(10) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=25 ;
 
 --
+-- Dumpning av Data i tabell `postcat`
+--
 
+--
+-- Tabellstruktur `posts`
+--
 
 CREATE TABLE IF NOT EXISTS `posts` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -74,9 +79,7 @@ CREATE TABLE IF NOT EXISTS `posts` (
   `created` datetime NOT NULL,
   `views` int(20) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
-
---
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 
 --
@@ -92,7 +95,8 @@ CREATE TABLE IF NOT EXISTS `users` (
   `email` varchar(45) NOT NULL,
   `image_url` varchar(45) DEFAULT '05.png',
   `Registred` datetime DEFAULT NULL,
+  `Presentation` text NOT NULL,
+  `online` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=49 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=53 ;
 
---

@@ -1,3 +1,8 @@
+
+
+
+
+
 <br> <br>
 <div class='tables'>Member List</div>
 
@@ -9,6 +14,7 @@
 
 			<th><?php echo $this->Paginator->sort('roles'); ?></th>
 			<th><?php echo $this->Paginator->sort('Registred'); ?></th>
+				<th>Comments <br></th>
 			
 	</tr>
 	<?php foreach ($users as $user): ?>
@@ -18,6 +24,9 @@
                         <td>	<?php echo $this->Html->image($user['User']['image_url'], array('alt' => 'Avatar', 'width' => '30px')); ?> </td>
 		<td><?php echo h($user['User']['roles']); ?>&nbsp;&nbsp;&nbsp;</td>
 		<td><?php echo h($user['User']['Registred']); ?>&nbsp;&nbsp;&nbsp;</td>
+		  <td>	<?php    $comments  = $this->requestAction('Comments/index/'.$user['User']['id'] ); ?>
+<?php echo count($comments) ?>&nbsp;&nbsp;&nbsp;</td>
+
 		<td class="actions">
 		
 			<?php if ($current_user['id'] == $user['User']['id'] || $current_user['roles'] == 'admin'): ?>

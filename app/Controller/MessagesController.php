@@ -30,10 +30,7 @@ $this->ban_check();
                 'Message.id' => $id
             )
 
-        )
-
-        
-        );
+        )   );
         
 
         $this->set(compact('messages'));
@@ -41,6 +38,20 @@ $this->ban_check();
 
 
 	$this->Message->updateAll(array('read'=> true ), array('Message.id'=>$id));
+
+         if ($this->request->is('post')) {
+            $this->request->data['Message']['sender_id'] = $this->Auth->user('id');
+           
+
+
+            if ($this->Message->save($this->request->data)) {
+                $this->Session->setFlash('Message successfully sent.');
+                $this->redirect(array('action' => 'outbox'));
+            }
+
+        }
+        
+
     }
     public function outbox() {
  $this->ban_check();

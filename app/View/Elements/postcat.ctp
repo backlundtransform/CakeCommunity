@@ -46,10 +46,4 @@
 
 
 
-<<<<<<< HEAD
-=======
-			<?php echo $this->Html->link($postcat['Postcat']['name'], array('controller' => 'postcats','action' => 'view', $postcat['Postcat']['id'], 'admin'=>false)); ?>
-        <br>
-<?php endforeach; ?>  </div>
->>>>>>> c2ebab6aa96e140f8808a1c0205ec7240c356d3b
 

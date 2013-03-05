@@ -2,11 +2,11 @@
       <div class='inbox'> 
       
 
-                  <br>[ Inbox | Sent |
+                  <br>[ <?php echo $this->Html->link('Inbox ('. count($messages).')' , array( 'action' => 'inbox')); ?>  | Sent |
                   
                        <?php echo $this->Html->link('Send PM ', array( 'action' => 'compose')); ?>
-                  
-                  | My profile ]
+
+                  |<?php echo $this->Html->link('My profile', array('controller'=>'users', 'action'=>'view', $current_user['id'],  'admin'=>false)); ?> ]
                   <hr>
       
       <?php

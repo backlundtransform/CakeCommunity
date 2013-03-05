@@ -12,14 +12,18 @@ class UsersController extends AppController {
 
 
      public function beforeFilter(){
-     	
+
+
+
 			parent::beforeFilter();
-            $this->Auth->allow('add');
-			
+            $this->Auth->allow('add', 'view');
 			
 		
+
+
+		
        
-	
+
      }
 	 
 	 
@@ -42,11 +46,25 @@ class UsersController extends AppController {
 	        if ($user['id'] != $this->request->params['pass'][0]) {
 	            return false;
 	        }
+
 	    }
-	    return true;
+	    
+
+	          return true;
+
+
 	}
 	
 
+public function online() { 
+
+
+       $online = $this->User->find('all', array('conditions' => array('online' => true)));
+       $this->set(compact('online',$online));
+       return $online;
+
+
+}
 
  public function login() {
 
@@ -55,7 +73,8 @@ class UsersController extends AppController {
 
              if ($this->Auth->login()){
                
-
+                  $this->User->updateAll(array('online'=> true ),
+    array('id' => $this->Auth->User()));
                  $this->redirect("/");
              }else{
                
@@ -70,6 +89,8 @@ class UsersController extends AppController {
         }
         
         public function logout() {
+          $this->User->updateAll(array('online'=> false ),
+    array('id' => $this->Auth->User()));
 	 $this->redirect($this->Auth->logout());
 	}
 	public function index() {
@@ -93,7 +114,9 @@ class UsersController extends AppController {
  * @return void
  */
 	public function view($id = null) {
-		if (!$this->User->exists($id)) {
+
+
+  if (!$this->User->exists($id)) {
 			throw new NotFoundException(__('Invalid user'));
 		}
 		$options = array('conditions' => array('User.' . $this->User->primaryKey => $id));
@@ -161,7 +184,7 @@ class UsersController extends AppController {
 			if ($this->User->save($this->request->data)) {
 				$this->Session->setFlash(__('The user has been saved'));
 				
-				$this->redirect(array('action' => 'index'));
+				$this->redirect(array('action' => 'view',$id));
 			} else {
 				$this->Session->setFlash(__('The user could not be saved. Please, try again.'));
 			}
