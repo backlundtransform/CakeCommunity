@@ -95,7 +95,7 @@ margin-left: -100%;
 float: left;
 width: 200px; /*Width of right column*/
 margin-left: -200px; /*Set left marginto -(RightColumnWidth)*/
-font-size: 10pt;
+font-size: 8pt;
 background: #0a1119;
 -moz-border-radius-bottomright: 10px; -moz-border-radius-bottomleft: 10px; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;}
 
@@ -119,7 +119,62 @@ div.viewmenu{display: none; font-size: 8pt; margin-left:8px; }
 .c_p{ background: url(/CakeCommunity/img/c_p.png); background-repeat:no-repeat; border:none; text-indent:12px; color:#fff;}
 
 
+#search .searchQueryFl{width:120px;border:0px;
 
+ padding: 3px; 
+ font-size: 15px; 
+ text-shadow: 0px 1px 0px #fff; 
+ outline: none; 
+ 
+
+
+ 
+
+ 
+
+padding-left:25px;
+ 
+ -webkit-border-radius: 3px;
+ -moz-border-radius: 3px; 
+ border-radius: 3px; 
+ border: 1px solid #717171; 
+ -webkit-box-shadow: 0px 0px 2px #000000; 
+ -moz-box-shadow: 0px 0px 2px #000000; 
+ box-shadow: 0px 0px 2px #000000; 
+ 
+ -webkit-appearance: none;
+ 
+ }
+#search div {display: inline;}
+#search {width:120px;
+height:40px;
+
+background-repeat:no-repeat; 
+padding:0px;
+margin:0px;
+position:relative; }
+
+input[value="Search"]{
+border:0px; 
+background-image: url("/CakeCommunity/img/search.png");
+ background-repeat: no-repeat;
+background-color:transparent; 
+position:absolute; 
+top:4px;
+left:0px;
+width:32px;
+height:28px;
+text-indent:-9999px;
+cursor:pointer;
+
+}
+  div.view{display: none;}
+.quote{display: inline; float:right }
+  .commentadmin { display: inline; float:right }
+.quoteMessage {Background: #161A1D url(/CakeCommunity/img/quote.png) no-repeat right top; border: 1px #fff dotted !important; border-left: 4px #8394B2 solid !important; border-top: 0 !important; padding: 3px;margin-left:30px;max-height:1000px !important; padding-right:20px;
+overflow-x: hidden;}
+
+a.admin:link {text-decoration:none; color:red;}
 
 a:link {text-decoration:none; color:#E4FAFD;}
 a:active {text-decoration:none; color:#E4FAFD;}
@@ -193,7 +248,7 @@ border-radius: 8px; min-height: 120px;}
 /* Post Form */
 
 
-input[value=login], a.Buttons {font-size:8pt;
+input[value=login], input[name=view], a.Buttons {font-size:8pt;
 position:relative;
  
 display:inline-block;
@@ -214,8 +269,8 @@ background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#8e909e), to(#4f
 background-image: -webkit-linear-gradient(top, #8e909e, #4f5268); background-image: -moz-linear-gradient(top, #8e909e, #4f5268); 
  background-image: -ms-linear-gradient(top, #8e909e, #4f5268); background-image: -o-linear-gradient(top, #8e909e, #4f5268);
  text-decoration:none;
- 
- width:  75px;
+
+ width:  80px;
 
 }
 

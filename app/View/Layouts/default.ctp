@@ -35,6 +35,7 @@
 		echo $this->fetch('script');
 		echo $this->Html->script('jquery');
 		echo $this->Html->script('cakejs');
+
 		
 	 if (isset($current_user['roles']) && $current_user['roles'] != 'user') {
 		echo $this->Html->script('ckeditor/ckeditor');
@@ -113,9 +114,19 @@
 
 </div>  </div>
 
-	<div id="leftcolumn"> <?php echo $this->element('loginform');?>
+	<div id="leftcolumn">
+
+                    <?php if($this->name =='Posts'):?>
+                    
+
+
+         <?php echo $this->element('search');?>
+           <?php endif ?>
+        <?php echo $this->element('loginform');?>
+
 	  <?php echo $this->element('postcat');?>
-</div><div id="rightcolumn"> </div>
+	   <?php echo $this->element('online');?>
+</div><div id="rightcolumn"> <?php echo $this->element('commentswidget');?></div>
 
 
 		<div id="footer">

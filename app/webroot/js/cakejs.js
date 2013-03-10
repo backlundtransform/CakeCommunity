@@ -1,36 +1,48 @@
 // Page menu
-$(document).ready(function() {
+$(document).ready(function() { 
     $('input[name=viewmenu]').click(function(){
   $(this).next("div.viewmenu").toggle();
  
 
  if ($(this).css("background-image") == 'url("http://localhost/CakeCommunity/img/c_p.png")' || $(this).css("background-image") == 'url(http://localhost/CakeCommunity/img/c_p.png)') {
  $(this).css("background-image", "url(http://localhost/CakeCommunity/img/c_m.png)");
- 
+
  }
  else {
  $(this).css("background-image", "url(http://localhost/CakeCommunity/img/c_p.png)");
  } 
  });
-});
+  });
+
+ // comment quote
+ $(document).ready(function() {
+
+  $("div.quote").click(function () {
+                           var insertText = $(this).prevUntil(".cinfo").text();
+                            var username = $(this).prevUntil(".cMessage").first().prev().text();
 
 
+        CKEDITOR.instances.CommentContent.setData('Quote('+username +')<div class="quoteMessage">'+insertText+'</div>');
+  
+   });
 
 
+   });
 
 // view more button
-
-$('input[name=view]').click(function(){
+ $(document).ready(function() {
+    $('input[name="view"]').click(function(){
+     
   $(this).prev("div.view").toggle();
-var value = $(this).attr('value');
+    var value = $(this).attr('value');
 
-if (value =='View more') {
+   if (value =='View more') {
 
-$(this).attr('value', 'View less');
-}else if (value =='View less'){
-$(this).attr('value', 'View more');
+  $(this).attr('value', 'View less');
+  }else if (value =='View less'){
+  $(this).attr('value', 'View more');
 }});
-
+     });
 //view spoiler
 
 $('input[name=spoiler]').click(function(){

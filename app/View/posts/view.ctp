@@ -26,25 +26,42 @@ Views: <?php echo $post['Post']['views']; ?> | Added by: <?php echo $this->Html-
                         <br>
                        <?php  echo $this->Html->link($paginate[$key]['User']['username'], array('controller' => 'users', 'action' => 'view', $paginate[$key]['User']['id'])); ?> </div>
                 <div class="cpost" style="margin-left:130px;" ><?php echo  $paginate[$key]['Comment']['content']; ?> </div>
-                      <?php
-                      
+
+						   
+						           <div class="commentadmin">
+                                                   <?php
+
                       if ($current_user['username']==$paginate[$key]['User']['username'] || $current_user['roles'] == 'admin'){
-                      	echo $this->Html->link(__('Edit Comment'), array('controller' => 'comments', 'action' => 'edit', $paginate[$key]['Comment']['id']));
+                      	echo $this->Html->link($this->Html->image('p_edit.gif'), array('controller' => 'comments', 'action' => 'edit', $paginate[$key]['Comment']['id']), array('escape' => false));
 					  }
-						  
-						   ?> 
-						    </div> 
-<?php
+
+						   ?>   <?php
 
 
 
 	if ($current_user['roles'] == 'admin') {
 	    
-	  echo $this->Form->postLink(__('Delete Comment'), array('controller' => 'comments', 'action' => 'delete', $paginate[$key]['Comment']['id']), null, __('Are you sure you want to delete # %s?', $paginate[$key]['Comment']['id'])); 
+	  echo $this->Html->link($this->Html->image('p_delete.gif'), array('controller' => 'comments', 'action' => 'delete', $paginate[$key]['Comment']['id']), array('escape' => false), __('Are you sure you want to delete # %s?', $paginate[$key]['Comment']['id']));
  
    	}
  
  ?>
+
+						       </div>
+
+                                                        <div class="quote">
+
+                                                                          <?php
+                                                                          
+
+                                                                          
+
+                                                                           echo  $this->Html->link($this->Html->image('p_quote.gif'),'#post', array('class' => 'quote', 'escape' => false)); ?>
+
+                                                    </div>
+                                                 </div>
+
+
                         
 
             
@@ -68,6 +85,8 @@ Views: <?php echo $post['Post']['views']; ?> | Added by: <?php echo $this->Html-
 	</div>
 <?php if ($logged_in): ?>
                  <table border="0" width="100%" cellspacing="1" cellpadding="2" class="commTable">
+     <a name="post">
+  <div id="post">
 
 <tr><td class="commTd2" colspan="2"><?php echo $this->Form->create('Comment', array(
     'url' => array('controller' => 'comments', 'action' => 'add'),
@@ -113,7 +132,8 @@ Views: <?php echo $post['Post']['views']; ?> | Added by: <?php echo $this->Html-
 	</fieldset>
 <div align="center"><?php echo $this->Form->end('Add Comment'); ?> </div>
 
-
+        </div>
+</a>
 </tr></table></td></tr>
 <?php else: ?>
 <?php echo $this->Html->link('Login', array('controller'=>'users', 'action'=>'login')); ?> or

@@ -16,7 +16,7 @@ class UsersController extends AppController {
 
 
 			parent::beforeFilter();
-            $this->Auth->allow('add', 'view');
+            $this->Auth->allow('add', 'view', 'online');
 			
 		
 
@@ -61,6 +61,7 @@ public function online() {
 
        $online = $this->User->find('all', array('conditions' => array('online' => true)));
        $this->set(compact('online',$online));
+      
        return $online;
 
 

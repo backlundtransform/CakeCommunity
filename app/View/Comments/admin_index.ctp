@@ -1,5 +1,5 @@
 <div class="comments index">
-	<h2><?php echo __('Comments Manager'); ?></h2>
+	
 	<table cellpadding="25" cellspacing="0">
 	<tr>
 			<th><?php echo $this->Paginator->sort('id'); ?></th>
@@ -10,8 +10,8 @@
 	</tr>
 	<?php foreach ($comments as $comment): ?>
 	<tr>
-		<td><?php echo h($comment['Comment']['id']); ?>&nbsp;</td>
-		<td><?php echo h($comment['Comment']['content']); ?>&nbsp;</td>
+		<td><?php echo $comment['Comment']['id']; ?>&nbsp;</td>
+		<td><?php echo $comment['Comment']['content']; ?>&nbsp;</td>
 		<td>
 			<?php echo $this->Html->link($comment['User']['name'], array('controller' => 'users', 'action' => 'view', $comment['User']['id'], 'admin'=>false)); ?>
 		</td>

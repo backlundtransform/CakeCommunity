@@ -18,7 +18,7 @@ class CommentsController extends AppController {
  
    public function beforeFilter(){
 
-
+                            $this->Auth->allow('index', 'view', 'widget');
 
 			parent::beforeFilter();
 
@@ -26,11 +26,29 @@ class CommentsController extends AppController {
        
 
      }
+     
+     
+      public function widget() {
+ 	$this->ban_check();
+
+
+
+	$this->Comment->recursive = 0;
+
+	$comments = $this->Comment->find('all', array('order' => 'created DESC'));
+
+
+
+            	return  $comments;
+		
+	}
     public function index($id = null) {
       $this->ban_check();
+
        $comments = $this->Comment->find('all', array('conditions' => array('comment.user_id' => $id)));
 
 			return   $comments;
+
                         
                          }
 	public function admin_index() {
@@ -38,6 +56,7 @@ class CommentsController extends AppController {
 		
 
 	$this->Comment->recursive = 0;
+	 $this->paginate = array('order' => 'created DESC');
 		$this->set('comments', $this->paginate());
 	}
 
@@ -99,16 +118,19 @@ class CommentsController extends AppController {
  * @return void
  */
 	public function edit($id = null) {
-		
-		
-	
+
+		      $this->Comment->id = $id;
+$post_id = $this->Comment->field('post_id');
+
+
+
 		if (!$this->Comment->exists($id)) {
 			throw new NotFoundException(__('Invalid comment'));
 		}
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->Comment->save($this->request->data)) {
 				$this->Session->setFlash(__('The comment has been saved'));
-				$this->redirect(array('controller' => 'Posts', 'action' => 'view', $this->Comment->post_id()));
+				$this->redirect(array('controller' => 'Posts', 'action' => 'view', $post_id));
 			} else {
 				$this->Session->setFlash(__('The comment could not be saved. Please, try again.'));
 			}

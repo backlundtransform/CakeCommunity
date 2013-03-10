@@ -7,6 +7,8 @@ App::uses('AppModel', 'Model');
  * @property Comment $Comment
  */
 class Post extends AppModel {
+  
+
 
 /**
  * Display field
@@ -14,7 +16,7 @@ class Post extends AppModel {
  * @var string
  */
  
- 
+
 public function isOwnedBy($post, $user) {
  return $this->field('id', array('id'=> $post, 'user_id' => $user)) === $post;
 }

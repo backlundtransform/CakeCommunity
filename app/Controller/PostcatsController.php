@@ -17,7 +17,7 @@ class PostcatsController extends AppController {
  
  public function index() {
  	$this->ban_check();
-
+         
 
 		$Categorylist = $this->Postcat->children();
 
@@ -169,7 +169,7 @@ class PostcatsController extends AppController {
 		if (in_array($this->action, array('admin_index', 'admin_add', 'admin_edit', 'admin_delete')) && $user['roles'] == 'admin')
 		{
 			return true;
-		
+
 		}else
 		{
 			return false;

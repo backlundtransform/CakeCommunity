@@ -17,15 +17,48 @@ class PostsController extends AppController {
  *
  * @return void
  */
- 
- 
+
+
+
     public function beforeFilter(){
-     	
+     	            $this->Auth->allow('index', 'view', 'search');
 			parent::beforeFilter();
 			
        
 	
-     }
+     }   
+     
+     function search()
+{
+      	$this->ban_check();
+	
+		$this->Post->recursive = 0;
+
+
+               $this->paginate = array('order' => 'created DESC');
+
+
+
+		$this->set('posts', $this->paginate());
+		             	
+
+  
+
+    if (!empty($this->data)) {
+        $searchstr = $this->data['Post']['search'];
+        $this->set('searchstring', $this->data['Post']['search']);
+        $conditions = array(
+            'conditions' => array(
+            'or' => array(
+                "Post.title LIKE" => "%$searchstr%",
+                "Post.content LIKE" => "%$searchstr%"
+            )
+            )
+        );
+        $this->set('posts', $this->Post->find('all', $conditions));
+    }
+}
+
 	public function index() {
 		$this->ban_check();
 	
