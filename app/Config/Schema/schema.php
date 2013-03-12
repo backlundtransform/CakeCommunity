@@ -33,3 +33,4 @@ class CakeauthSchema extends CakeSchema {
 	);
 
 }
+
