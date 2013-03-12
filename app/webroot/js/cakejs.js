@@ -19,7 +19,7 @@ $(document).ready(function() {
 
   $("div.quote").click(function () {
                            var insertText = $(this).prevUntil(".cinfo").text();
-                            var username = $(this).prevUntil(".cMessage").first().prev().text();
+                            var username = $(this).prevUntil(".cMessage").first()..prev().prev().text();
 
 
         CKEDITOR.instances.CommentContent.setData('Quote('+username +')<div class="quoteMessage">'+insertText+'</div>');
