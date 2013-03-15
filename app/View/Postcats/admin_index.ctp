@@ -9,7 +9,7 @@
 	<?php if (!empty($Categorylist)): ?>
 	<?php foreach($Categorylist as $key=>$value): ?>
 	<tr>
-                <?php if ($parents[0]): ?>
+                <?php if ($value['Postcat']['parent_id']==0): ?>
 		<td><?php echo $value['Postcat']['name']; ?>&nbsp;</td>
 
 		<td class="actions">

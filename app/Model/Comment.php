@@ -7,7 +7,7 @@ App::uses('AppModel', 'Model');
  * @property Post $Post
  */
 class Comment extends AppModel {
-
+var $createField = 'added'; 
 /**
  * Display field
  *
@@ -54,5 +54,21 @@ class Comment extends AppModel {
 			'fields' => '',
 			'order' => ''
 		)
-	);   
-}
+	);
+	
+	public function beforeSave($options = array()) {
+		
+		
+	 
+		    $nowDate = date('Y-m-d H:i:s');
+                if ($this->updateField) {
+                        $this->set($this->updateField, $nowDate);
+                }
+                if ($this->createField and !$this->exists()) {
+                        $this->set($this->createField, $nowDate);
+                }
+
+               
+	    return true;
+	}
+}   

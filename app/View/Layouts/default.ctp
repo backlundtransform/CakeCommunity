@@ -33,17 +33,18 @@
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
 		echo $this->fetch('script');
-		echo $this->Html->script('jquery');
+		echo $this->Html->script('jQuery');
 		echo $this->Html->script('cakejs');
-
+		echo $this->Html->script('jquery-ui-1.10.1.custom/js/jquery-ui-1.10.1.custom.min');
 		
 	 if (isset($current_user['roles']) && $current_user['roles'] != 'user') {
 		echo $this->Html->script('ckeditor/ckeditor');
+		 
 	 }
 
 
 	        echo $this->Js->writeBuffer();
-	?>
+	?> 
 </head>
 <body>
 	<div id="maincontainer">
@@ -122,8 +123,9 @@
 
          <?php echo $this->element('search');?>
            <?php endif ?>
-        <?php echo $this->element('loginform');?>
-
+          <div id="dialog">
+        <?php echo $this->element('popup');?></div>
+			<?php echo $this->element('loginform');?>
 	  <?php echo $this->element('postcat');?>
 	   <?php echo $this->element('online');?>
 </div><div id="rightcolumn"> <?php echo $this->element('commentswidget');?></div>

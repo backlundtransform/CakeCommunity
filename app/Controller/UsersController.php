@@ -117,6 +117,7 @@ public function online() {
 	public function view($id = null) {
 
 
+
   if (!$this->User->exists($id)) {
 			throw new NotFoundException(__('Invalid user'));
 		}

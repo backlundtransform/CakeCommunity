@@ -10,8 +10,8 @@
 	</tr>
 	<?php foreach ($comments as $comment): ?>
 	<tr>
-		<td><?php echo h($comment['Comment']['id']); ?>&nbsp;</td>
-		<td><?php echo h($comment['Comment']['content']); ?>&nbsp;</td>
+		<td><?php echo $comment['Comment']['id']; ?>&nbsp;</td>
+		<td><?php echo $comment['Comment']['content']; ?>&nbsp;</td>
 		<td>
 			<?php echo $this->Html->link($comment['User']['name'], array('controller' => 'users', 'action' => 'view', $comment['User']['id'])); ?>
 		</td>

@@ -50,14 +50,14 @@ echo $this->Html->link('Comments :'.count($commentnumber), array( 'action' => 'v
 
 
 </div>  
-			<?php 
+		<?php 
 				if ($current_user['roles'] == 'admin') {
 	    		
-					echo $this->Html->link(__('Edit'), array('controller' =>  'posts', 'action' => 'edit', $post['id']));?>
+					echo $this->Html->link($this->Html->image('p_edit.gif'), array('controller'=>'posts', 'action' => 'edit', $post['id']), array('escape' => false));?>
 					
-					<br>
+				
 					
-					<?php  echo $this->Form->postLink(__('Delete'), array('controller' =>  'posts', 'action' => 'delete', $post['id']), null, __('Are you sure you want to delete # %s?', $post['id']));
+					<?php  echo $this->Html->link($this->Html->image('p_delete.gif'), array('controller'=>'posts', 'action' => 'delete', $post['id']), array('escape' => false), __('Are you sure you want to delete # %s?', $post['id']));
 			
 	
  

@@ -50,15 +50,23 @@ class AppController extends Controller {
   
   
 var $helpers = array('Form', 'Html', 'Js', 'Time');
+
+
+ 
   public $components = array(
          'Session',
+          'RequestHandler' => array(
+        'viewClassMap' => array(
+            'json' => 'ApiKit.MyJson',
+            'xml' => 'ApiKit.MyXml',
+            'csv' => 'ApiKit.Csv'
+        )),
          'Auth' =>array(
                 'loginRedirect'=>array('controller' => 'users', 'action'=>'index', 'admin' =>false ),
                 'logoutRedirect'=>array('controller' => 'users', 'action'=>'index', 'admin' =>false ),
                 'authError'=>"You can't access that page" ,
                 'authErrorRedirect' => array('controller' => 'posts', 'action' => 'index', 'admin' =>false ),
-                'authorize'=>array('controller')
-         )
+                'authorize'=>array('Controller')  )
   ); 
   public function isAuthorized($user)
   {
@@ -68,6 +76,12 @@ var $helpers = array('Form', 'Html', 'Js', 'Time');
    public function beforeFilter(){
      
 
+if ($this->request->is('mobile')) {
+   
+     $this->theme = 'mobile';
+	
+}
+   
 
               $this->Auth->allow('index', 'view');
               $this->set('logged_in', $this->Auth->loggedIn());
@@ -78,6 +92,8 @@ var $helpers = array('Form', 'Html', 'Js', 'Time');
 		
        
   }
+   
+   
   
 }
 
