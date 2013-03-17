@@ -1,4 +1,4 @@
-<div class="users view">
+
 
 	                    <br>
 
@@ -49,4 +49,4 @@
 		
 	 <?php endif; ?>
 	
-</div>  </div>
+</div>  

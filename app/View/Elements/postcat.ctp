@@ -1,15 +1,13 @@
 
 
 
-
-
 <div class='tables'>Categories</div>
         <div class='innertube'>  <?php $Categorylist = $this->requestAction('Postcats/index');
 
         
         ?>
 
-<div class="postcats index">
+
 
 
 	<?php foreach($Categorylist as $key=>$value): ?>
@@ -40,10 +38,7 @@
 
 	<p>
 
-	</div>
-</div>
-<br>           </div>
-
+	</div></div>
 
 
 

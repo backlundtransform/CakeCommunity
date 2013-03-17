@@ -45,7 +45,7 @@ class CommentsController extends AppController {
     public function index($id = null) {
       $this->ban_check();
 
-       $comments = $this->Comment->find('all', array('conditions' => array('comment.user_id' => $id)));
+       $comments = $this->Comment->find('all', array('conditions' => array('Comment.user_id' => $id)));
 
 			return   $comments;
 

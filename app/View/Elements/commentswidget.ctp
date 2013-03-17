@@ -13,7 +13,7 @@
 			<?php echo $this->Html->link($comment['User']['name'], array('controller' => 'users', 'action' => 'view', $comment['User']['id'], 'admin'=>false)); ?> made a comment on :
 
 			<?php echo $this->Html->link($comment['Post']['title'], array('controller' => 'posts', 'action' => 'view', $comment['Post']['id'], 'admin'=>false)); ?>
-
+ <?php echo $this->Time->timeAgoInWords($comment['Comment']['added']);?>
 
                          <br>  <?php if($key === 5):?>
        <div class="view">
@@ -26,6 +26,7 @@
     
     
       </div >
+      
 <input type="submit" name="view" value ='View more' class="Button">
     
     

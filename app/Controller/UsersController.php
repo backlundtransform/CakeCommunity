@@ -61,7 +61,7 @@ public function online() {
 
        $online = $this->User->find('all', array('conditions' => array('online' => true)));
        $this->set(compact('online',$online));
-      
+
        return $online;
 
 
@@ -115,6 +115,7 @@ public function online() {
  * @return void
  */
 	public function view($id = null) {
+
 
 
   if (!$this->User->exists($id)) {

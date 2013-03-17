@@ -1,0 +1,6 @@
+[15-Mar-2013 10:40:42 Europe/Berlin] PHP Parse error:  syntax error, unexpected T_ELSE in /home/goranbit/public_html/CakeCommunity/app/View/Elements/online.ctp on line 14
+[15-Mar-2013 10:42:59 Europe/Berlin] PHP Fatal error:  Call to a member function generateTreeList() on a non-object in /home/goranbit/public_html/CakeCommunity/app/Controller/PostsController.php on line 139
+[15-Mar-2013 10:43:19 Europe/Berlin] PHP Fatal error:  Call to a member function generateTreeList() on a non-object in /home/goranbit/public_html/CakeCommunity/app/Controller/PostsController.php on line 139
+[15-Mar-2013 10:53:02 Europe/Berlin] PHP Fatal error:  Call to a member function generateTreeList() on a non-object in /home/goranbit/public_html/CakeCommunity/app/Controller/PostsController.php on line 139
+[15-Mar-2013 10:53:09 Europe/Berlin] PHP Fatal error:  Call to a member function generateTreeList() on a non-object in /home/goranbit/public_html/CakeCommunity/app/Controller/PostsController.php on line 139
+[15-Mar-2013 10:57:58 Europe/Berlin] PHP Fatal error:  Call to a member function generateTreeList() on a non-object in /home/goranbit/public_html/CakeCommunity/app/Controller/PostsController.php on line 139

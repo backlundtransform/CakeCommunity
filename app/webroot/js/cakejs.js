@@ -14,16 +14,34 @@ $(document).ready(function() {
  });
   });
 
- // comment quote
+ // quote
  $(document).ready(function() {
 
-  $("div.quote").click(function () {
+  $("div.threadquote").click(function () {
+    
+
                            var insertText = $(this).prevUntil(".cinfo").text();
-                            var username = $(this).prevUntil(".cMessage").first().prev().text();
+                            var username = $(this).prevUntil(".cMessage").first().prev().prev().text();
+
+
+        CKEDITOR.instances.ThreadanswerContent.setData('Quote('+username +')<div class="quoteMessage">'+insertText+'</div>');
+
+   });
+
+
+   });
+   
+   $(document).ready(function() {
+
+  $("div.quote").click(function () {
+    
+
+                           var insertText = $(this).prevUntil(".cinfo").text();
+                            var username = $(this).prevUntil(".cMessage").first().prev().prev().text();
 
 
         CKEDITOR.instances.CommentContent.setData('Quote('+username +')<div class="quoteMessage">'+insertText+'</div>');
-  
+
    });
 
 
@@ -32,7 +50,7 @@ $(document).ready(function() {
 // view more button
  $(document).ready(function() {
     $('input[name="view"]').click(function(){
-     
+
   $(this).prev("div.view").toggle();
     var value = $(this).attr('value');
 
@@ -78,4 +96,18 @@ $(document).ready(function(){
  return false; 
  }); 
  });
+
+ 
+ //popup
+ $(document).ready(function(){
+$("#dialog").dialog({ autoOpen: false });
+
+
+$('a.dialog').click(function() {
+
+$(".hidden").toggle();
+$('#dialog').dialog('open');
+
+});
+});
 

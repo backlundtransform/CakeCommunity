@@ -33,17 +33,18 @@
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
 		echo $this->fetch('script');
-		echo $this->Html->script('jquery');
+		echo $this->Html->script('jQuery');
 		echo $this->Html->script('cakejs');
-
+		echo $this->Html->script('jquery-ui-1.10.1.custom/js/jquery-ui-1.10.1.custom.min');
 		
 	 if (isset($current_user['roles']) && $current_user['roles'] != 'user') {
 		echo $this->Html->script('ckeditor/ckeditor');
+		 
 	 }
 
 
 	        echo $this->Js->writeBuffer();
-	?>
+	?> 
 </head>
 <body>
 	<div id="maincontainer">
@@ -88,8 +89,9 @@
  <?php endif; ?>
 
 			</div><div id='menu'><ul>
-		<li><?php echo $this->Html->link(__('Main'), array('controller' => 'posts', 'action' => 'index', 'admin'=>false)); ?> </li>
-		
+		<li><?php echo $this->Html->link(__('Posts'), array('controller' => 'posts', 'action' => 'index', 'admin'=>false)); ?> </li>
+		  <li><?php echo $this->Html->link(__('Threads'), array('controller' => 'Threads', 'action' => 'index', 'admin'=>false)); ?> </li>
+
 		<li><?php echo $this->Html->link(__('Members'), array('controller' => 'users', 'action' => 'index', 'admin'=>false)); ?> </li>
 		
 	</ul></div></div></div>
@@ -98,7 +100,10 @@
 
 
 		<div id="contentwrapper">
+ <?php if($this->name =='Posts'):?>
 <div id="contentcolumn">
+   <?php else:?>
+  <div id="contentcolumn2">  <?php endif ?>
 <div class="innertube">
 
 
@@ -120,15 +125,23 @@
                     
 
 
-         <?php echo $this->element('search');?>
-           <?php endif ?>
-        <?php echo $this->element('loginform');?>
+         <?php echo $this->element('search');?>    <?php endif ?>
 
+
+			<?php echo $this->element('loginform');?>
+			<?php if($this->name =='Posts'):?>
 	  <?php echo $this->element('postcat');?>
+	  <?php endif ?>
 	   <?php echo $this->element('online');?>
-</div><div id="rightcolumn"> <?php echo $this->element('commentswidget');?></div>
+</div>
+
+ <?php if($this->name =='Posts'):?>
+
+<div id="rightcolumn"> <?php echo $this->element('commentswidget');?></div><?php endif ?>   </div>
 
 
+<div id="dialog">
+        <?php echo $this->element('popup');?></div>
 		<div id="footer">
 
                   </div>

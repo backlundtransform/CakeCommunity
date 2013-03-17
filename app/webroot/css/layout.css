@@ -5,7 +5,9 @@ body {margin:0;padding:0; background:#06080b;}
 a {outline: 0;}
 
 #topsection{
-height: 210px; /*Height of top section*/
+height: 210px; 
+
+ background: url('/CakeCommunity/img/cake.png') no-repeat center;
 
 }
 
@@ -78,6 +80,12 @@ border-top: 1px solid; border-color: #8C8C9C; font-size: 10pt;
 
 }
 
+#contentcolumn2{
+margin-left: 180px; 
+border-top: 1px solid; border-color: #8C8C9C; font-size: 10pt;
+
+}
+
 
 #leftcolumn{
 float: left;
@@ -93,15 +101,15 @@ margin-left: -100%;
 
 #rightcolumn{
 float: left;
-width: 200px; /*Width of right column*/
-margin-left: -200px; /*Set left marginto -(RightColumnWidth)*/
+width: 200px;
+margin-left: -200px;
 font-size: 8pt;
 background: #0a1119;
 -moz-border-radius-bottomright: 10px; -moz-border-radius-bottomleft: 10px; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;}
 
 
 .innertube{
-margin: 12px; /*Margins for inner DIV inside each column (to provide padding)*/
+margin: 12px;
 margin-top: 0;
 }
 
@@ -180,7 +188,9 @@ a:link {text-decoration:none; color:#E4FAFD;}
 a:active {text-decoration:none; color:#E4FAFD;}
 a:visited {text-decoration:none; color:#E4FAFD;}
 a:hover {text-decoration:underline; color:#FFFFFF;}
+.threadtop {padding:10px; background:#161A1D;}
 
+.thread {padding:10px; background-color: #2D343A; width:100%; border-bottom: solid 1px #fff; height: 30px;}
 td, body {font-family:verdana,arial,helvetica; font-size:8pt; color:#B8B7B6;}
 form {padding:0px;margin:0px;}
 input,textarea,select {vertical-align:middle; font-size:8pt; font-family:verdana,arial,helvetica;}
@@ -196,7 +206,7 @@ input,textarea,select {vertical-align:middle; font-size:8pt; font-family:verdana
 /* Comments Style */
 
 
-.cMessage {background:#2D343A; border-top: 1px solid; border-color: #8C8C9C;min-height: 160px;}
+.cMessage {background:#2D343A; border-top: 1px solid; border-color: #8C8C9C;min-height: 160px; font-size:8pt; }
 
 
 .ctop {background:#2D343A;color:#000000;height:23px;font-size:10pt; width: 100% border-top: 1px solid; border-color: #8C8C9C;}
@@ -204,7 +214,7 @@ input,textarea,select {vertical-align:middle; font-size:8pt; font-family:verdana
 .cinfo img {-moz-border-radius: 8px; -webkit-border-radius: 8px; border-radius: 8px;}
 .cpost {margin:8px; padding:5px; text-align: left; vertical-align: top; background:#151e22;-webkit-border-radius: 8px;
 -moz-border-radius: 8px;
-border-radius: 8px; min-height: 120px;}
+border-radius: 8px; min-height: 120px; font-size:10pt !important;}
 .cpost li{margin-left:25px;}
 
 #comment {display:none;}
@@ -283,8 +293,32 @@ background-image: -webkit-linear-gradient(top, #8e909e, #4f5268); background-ima
  background-image: -ms-linear-gradient(top, #8e909e, #4f5268); background-image: -o-linear-gradient(top, #8e909e, #4f5268);}
 .codeCloseAll {font-size:8pt;background: #2B2B30;color:#E4FAFD;border:1px outset #2B2B30;font-weight:bold;}
 
+.hidden{
+ display: none;
 
+}
+#dialog{ 
 
+margin: 20px;
+
+color:#000000;
+ font-family: arial,verdana,sans-serif;
+background-image: linear-gradient(bottom, rgb(165,172,179) 19%, rgb(151,170,184) 55%, rgb(175,183,199) 87%);
+background-image: -o-linear-gradient(bottom, rgb(165,172,179) 19%, rgb(151,170,184) 55%, rgb(175,183,199) 87%);
+background-image: -moz-linear-gradient(bottom, rgb(165,172,179) 19%, rgb(151,170,184) 55%, rgb(175,183,199) 87%);
+background-image: -webkit-linear-gradient(bottom, rgb(165,172,179) 19%, rgb(151,170,184) 55%, rgb(175,183,199) 87%);
+background-image: -ms-linear-gradient(bottom, rgb(165,172,179) 19%, rgb(151,170,184) 55%, rgb(175,183,199) 87%);
+
+background-image: -webkit-gradient(
+	linear,
+	left bottom,
+	left top,
+	color-stop(0.19, rgb(165,172,179)),
+	color-stop(0.55, rgb(151,170,184)),
+	color-stop(0.87, rgb(175,183,199))
+);
+
+}
 #userbar{
  display: block;
  font-family: arial,verdana,sans-serif;
@@ -313,7 +347,7 @@ position: fixed;
  margin-top: -24px;
   font-size: 12px;
   
- 
+ z-index: 999;
  
  
 }

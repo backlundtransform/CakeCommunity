@@ -9,10 +9,10 @@
 	<table cellpadding="0" cellspacing="60">
 	<tr>
 			
-			<th><?php echo $this->Paginator->sort('username'); ?></th>
-                         <th><?php echo $this->Paginator->sort('image_url'); ?></th>
+			<th><?php echo $this->Paginator->sort('username', 'Name'); ?></th>
+                         <th><?php echo $this->Paginator->sort('image_url', 'Avatar'); ?></th>
 
-			<th><?php echo $this->Paginator->sort('roles'); ?></th>
+			<th><?php echo $this->Paginator->sort('roles', 'Group' ); ?></th>
 			<th><?php echo $this->Paginator->sort('Registred'); ?></th>
 				<th>Comments <br></th>
 			

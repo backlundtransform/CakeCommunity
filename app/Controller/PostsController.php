@@ -70,8 +70,14 @@ class PostsController extends AppController {
 
 
 		$this->set('posts', $this->paginate());
-		             	}
+	
+		 $this->set('_serialize', array('posts'));
+		
 
+
+		             	}
+	
+	
 /**
  * view method
  *
@@ -177,7 +183,7 @@ class PostsController extends AppController {
 		if (!$this->Post->exists()) {
 			throw new NotFoundException(__('Invalid post'));
 		}
-		$this->request->onlyAllow('post', 'delete');
+		
 		if ($this->Post->delete()) {
 			$this->Session->setFlash(__('Post deleted'));
 			$this->redirect(array('action' => 'index'));

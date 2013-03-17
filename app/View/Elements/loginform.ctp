@@ -2,13 +2,13 @@
 
 
 <?php if (!$logged_in): ?><div class="tables">Login</div>
-    <div class="innertube"><?php 
+    <div class="innertube"><br><?php 
 
 
       echo $this->Form->create('User', array('action' => 'login', 'admin'=>false));
       echo $this->Form->input('username');
-      echo $this->Form->input('password');
-      echo $this->Form->end('login');
+      echo $this->Form->input('password');?><br>
+     <?php  echo $this->Form->end('login');
 
       
       ?><br>

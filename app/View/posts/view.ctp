@@ -2,17 +2,17 @@
       <?php $this->set('title_for_layout', $post['Post']['title']);?>
 
 
-<div class="eBlock" style="padding: 3px;" border="0" cellpadding="0" cellspacing="0" width="100%">
+<div class="eBlock">
 
- <div class="eTitle" style="text-align: left;"> <?php echo h($post['Post']['title']); ?>
+ <div class="eTitle"> <?php echo h($post['Post']['title']); ?>
  </div><div class="eMessage" style="text-align: left; clear: both; padding-top: 2px; padding-bottom: 2px;">
-      <?php echo $post['Post']['content']; ?>
+      <?php echo $post['Post']['content']; ?></div></div> 
  <div class="eDetails" style="clear: both;">
 Views: <?php echo $post['Post']['views']; ?> | Added by: <?php echo $this->Html->link($post['User']['name'], array('controller' => 'users', 'action' => 'view', $post['User']['id'])); ?> | Creation time:   <?php echo $post['Post']['created']; ?>
 
 
 
-</div></div>   </div>
+  </div>
 
 
 
@@ -21,7 +21,7 @@ Views: <?php echo $post['Post']['views']; ?> | Added by: <?php echo $this->Html-
 
                 
             <?php foreach ($paginate as $key => $comment): ?>
-                        <div class="cMessage"><div class="cinfo"><br><?php 
+                        <div class="cMessage">Message: <?php echo $key+1; ?> | Added: <?php echo $this->Time->timeAgoInWords($paginate[$key]['Comment']['added']);?><div class="cinfo"><br><?php 
                         echo $this->Html->image($paginate[$key]['User']['image_url'], array('alt' => 'Avatar' , 'width' => '60px'));?>
                         <br>
                        <?php  echo $this->Html->link($paginate[$key]['User']['username'], array('controller' => 'users', 'action' => 'view', $paginate[$key]['User']['id'])); ?> </div>
@@ -48,7 +48,7 @@ Views: <?php echo $post['Post']['views']; ?> | Added by: <?php echo $this->Html-
  ?>
 
 						       </div>
-
+<?php if ($logged_in): ?>
                                                         <div class="quote">
 
                                                                           <?php
@@ -57,8 +57,10 @@ Views: <?php echo $post['Post']['views']; ?> | Added by: <?php echo $this->Html-
                                                                           
 
                                                                            echo  $this->Html->link($this->Html->image('p_quote.gif'),'#post', array('class' => 'quote', 'escape' => false)); ?>
-
-                                                    </div>
+         </div>
+                                                   
+                                                   <?php endif ?>
+                                           
                                                  </div>
 
 
@@ -136,7 +138,7 @@ Views: <?php echo $post['Post']['views']; ?> | Added by: <?php echo $this->Html-
 </a>
 </tr></table></td></tr>
 <?php else: ?>
-<?php echo $this->Html->link('Login', array('controller'=>'users', 'action'=>'login')); ?> or
+<?php echo $this->Html->link('Login', 'javascript:{}', array('class'=>'dialog')); ?> or
 <?php echo $this->Html->link(__('Register'), array('controller' => 'users', 'action' => 'add')); ?>
  to leave a comment
 <?php endif; ?>
