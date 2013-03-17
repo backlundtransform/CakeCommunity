@@ -96,6 +96,20 @@ $(document).ready(function(){
  return false; 
  }); 
  });
+ 
+ 
+ //popup
+ $(document).ready(function(){
+$("#dialog").dialog({ autoOpen: false });
+
+
+$('a.dialog').click(function() {
+
+$(".hidden").toggle();
+$('#dialog').dialog('open');
+
+});
+});
 
  
  //popup
