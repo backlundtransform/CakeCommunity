@@ -19,7 +19,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <?php echo $this->Html->charset(); ?>
+	<?php echo $this->Html->charset(); ?>
 	<title>
 
 		<?php echo $title_for_layout; ?>
@@ -50,7 +50,7 @@
 	<div id="maincontainer">
 
 
-<div id="topsection"><div class="innertube"> 
+<header>  <div class="innertube"> 
 
  <?php if ($logged_in): ?>
 
@@ -88,16 +88,15 @@
  </ul></div>
  <?php endif; ?>
 
-			</div><div id='menu'><ul>
+			</div> <nav>  <ul>
 		<li><?php echo $this->Html->link(__('Posts'), array('controller' => 'posts', 'action' => 'index', 'admin'=>false)); ?> </li>
 		  <li><?php echo $this->Html->link(__('Threads'), array('controller' => 'Threads', 'action' => 'index', 'admin'=>false)); ?> </li>
 
 		<li><?php echo $this->Html->link(__('Members'), array('controller' => 'users', 'action' => 'index', 'admin'=>false)); ?> </li>
 		
-	</ul></div></div></div>
+	</ul><nav></div></div></div>
 
-			</div></div></div>
-
+			</div></div><header>
 
 		<div id="contentwrapper">
  <?php if($this->name =='Posts'):?>
@@ -119,7 +118,7 @@
 
 </div>  </div>
 
-	<div id="leftcolumn">
+	<section id="leftcolumn">
 
                     <?php if($this->name =='Posts'):?>
                     
@@ -133,18 +132,18 @@
 	  <?php echo $this->element('postcat');?>
 	  <?php endif ?>
 	   <?php echo $this->element('online');?>
-</div>
+</section>
 
  <?php if($this->name =='Posts'):?>
 
-<div id="rightcolumn"> <?php echo $this->element('commentswidget');?></div><?php endif ?>   </div>
+<section id="rightcolumn"> <?php echo $this->element('commentswidget');?></div><?php endif ?>   </section >
 
 
 <div id="dialog">
         <?php echo $this->element('popup');?></div>
-		<div id="footer">
+		<footer>
 
-                  </div>
+                  </footer>
 
 </div>
 
