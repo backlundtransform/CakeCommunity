@@ -4,14 +4,14 @@
 body {margin:0;padding:0; background:#06080b;}
 a {outline: 0;}
 
-#topsection{
+header{
 height: 210px; 
 
  background: url('/CakeCommunity/img/cake.png') no-repeat center;
 
 }
 
-#topsection a{
+header a{
 
 color:#E4FAFD;
 
@@ -42,7 +42,7 @@ background-image: -webkit-linear-gradient(bottom, rgb(174,199,229) 16%, rgb(86,1
 background-image: -ms-linear-gradient(bottom, rgb(174,199,229) 16%, rgb(86,110,134) 63%, rgb(174,199,229) 91%);
 
 background-image: -webkit-gradient(
-  linear,
+	linear,
 	left bottom,
 	left top,
 	color-stop(0.16, rgb(174,199,229)),
@@ -57,7 +57,7 @@ background-image: -webkit-gradient(
     text-align: center;
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
 }
-#menu{
+nav {
  color: #ffffff;
  padding-top: 152px;
  margin: auto;
@@ -116,7 +116,7 @@ margin-top: 0;
 
 
 
-#footer{
+footer{
 clear: left;
 width: 100%;
 
@@ -297,10 +297,11 @@ background-image: -webkit-linear-gradient(top, #8e909e, #4f5268); background-ima
  display: none;
 
 }
-#dialog{ 
 
-margin: 20px;
-
+.ui-dialog
+{
+position:fixed;
+padding-left:20px;
 color:#000000;
  font-family: arial,verdana,sans-serif;
 background-image: linear-gradient(bottom, rgb(165,172,179) 19%, rgb(151,170,184) 55%, rgb(175,183,199) 87%);
@@ -317,8 +318,8 @@ background-image: -webkit-gradient(
 	color-stop(0.55, rgb(151,170,184)),
 	color-stop(0.87, rgb(175,183,199))
 );
-
 }
+
 #userbar{
  display: block;
  font-family: arial,verdana,sans-serif;
@@ -467,13 +468,13 @@ padding: 4px 10px 4px 10px;
 
 
 
-#menu ul {
+nav ul {
  font-family: arial,verdana,sans-serif;
  font-size: 14px;
  font-weight: bold; 
 }
 
-#menu li {
+nav li {
  display: block;
  float: left;
  padding: 4px 10px 4px 10px;
@@ -484,7 +485,7 @@ padding: 4px 10px 4px 10px;
 
 }
 
-#menu li a {
+nav li a {
  background-color: inherit;
  color: #bbbbbb;
  text-decoration: none;
@@ -492,7 +493,7 @@ padding: 4px 10px 4px 10px;
  
 }
 
-#menu li ul {
+nav li ul {
  background-color: #090D11;
  border: 2px inset #FFFFFF;
  color: inherit;
@@ -507,11 +508,11 @@ padding: 4px 10px 4px 10px;
  
 }
 
-#menu li:hover ul {
+nav li:hover ul {
  display: block; text-decoration: none;
 }
 
-#menu li li {
+nav li li {
  display: block;
  padding: 0px;
  width: 150px;
@@ -519,7 +520,7 @@ padding: 4px 10px 4px 10px;
  
 }
 
-#menu li li:hover {
+nav li li:hover {
  background-color: #999999;
  color: inherit;
  text-decoration: none;
@@ -530,7 +531,7 @@ padding: 4px 10px 4px 10px;
  
  }
 
-#menu li li a {
+nav li li a {
  background-color: inherit;
  border: 0px;
  color: #FFFFFF;
