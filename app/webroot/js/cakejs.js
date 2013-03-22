@@ -14,16 +14,34 @@ $(document).ready(function() {
  });
   });
 
- // comment quote
+ // quote
  $(document).ready(function() {
 
-  $("div.quote").click(function () {
+  $("div.threadquote").click(function () {
+    
+
                            var insertText = $(this).prevUntil(".cinfo").text();
-                            var username = $(this).prevUntil(".cMessage").first().prev().prev().text();
+                            var username = $(this).prevUntil('cMessage').first().prev().prev().prev().text();
+
+
+        CKEDITOR.instances.ThreadanswerContent.setData('Quote('+username +')<div class="quoteMessage">'+insertText+'</div>');
+
+   });
+
+
+   });
+   
+   $(document).ready(function() {
+
+  $("div.quote").click(function () {
+    
+
+                           var insertText = $(this).prevUntil(".cinfo").text();
+                             var username = $(this).prevUntil('cMessage').first().prev().prev().prev().text();
 
 
         CKEDITOR.instances.CommentContent.setData('Quote('+username +')<div class="quoteMessage">'+insertText+'</div>');
-  
+
    });
 
 
@@ -32,7 +50,7 @@ $(document).ready(function() {
 // view more button
  $(document).ready(function() {
     $('input[name="view"]').click(function(){
-     
+
   $(this).prev("div.view").toggle();
     var value = $(this).attr('value');
 
@@ -80,7 +98,35 @@ $(document).ready(function(){
  });
  
  
- //popup
+
+
+ 
+ //popups
+ 
+ 
+ /*$(function() {
+  var moveLeft = 20;
+  var moveDown = 10;
+
+  $('a.trigger').hover(function(e) {
+  
+  $(this).next().toggleClass('.popup');
+
+
+   
+ }, function() {
+   $(this).next('.popup').hide();
+  });
+
+ $('a.trigger').mousemove(function(e) {
+  $("div.popup").css('top', e.pageY + moveDown).css('left', e.pageX + moveLeft);
+  	});
+
+	});//
+*/
+
+ 
+	
  $(document).ready(function(){
 $("#dialog").dialog({ autoOpen: false });
 

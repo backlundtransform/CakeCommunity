@@ -87,7 +87,7 @@ class PostsController extends AppController {
  */
 	public function view($id = null) {
 		$this->ban_check();
-    	$this->paginate = array('limit'=>5,
+    	$this->paginate = array('limit'=>15,
 			'conditions' => array('Comment.post_id' => $id)
 		);
 			
@@ -139,7 +139,7 @@ class PostsController extends AppController {
 		$category = $this->Post->Postcat->generateTreeList(null, null, null,"_");
 	
 		$this->set(compact('category'));
-		$users = $this->Post->User->find('list');
+		$users = $this->Post->User->find('all');
 		$this->set(compact('users'));
 	}
 
@@ -166,7 +166,7 @@ class PostsController extends AppController {
 			$options = array('conditions' => array('Post.' . $this->Post->primaryKey => $id));
 			$this->request->data = $this->Post->find('first', $options);
 		}
-		$users = $this->Post->User->find('list');
+		$users = $this->Post->User->find('all');
 		$this->set(compact('users'));
 	}
 

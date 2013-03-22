@@ -1,16 +1,13 @@
 
 <div class='tables'>Recent Comments</div>
-        <div class='innertube'>  <?php $comments = $this->requestAction('Comments/widget');
-
-        
-        ?>
+        <div class='innertube'>  <?php $comments = $this->requestAction('Comments/widget');?>
 
 
 
 	<?php foreach($comments as $key=>$comment): ?>
                           <br>
 
-			<?php echo $this->Html->link($comment['User']['name'], array('controller' => 'users', 'action' => 'view', $comment['User']['id'], 'admin'=>false)); ?> made a comment on :
+			<?php echo $this->Html->link($comment['User']['username'], array('controller' => 'users', 'action' => 'view', $comment['User']['id'], 'admin'=>false)); ?> made a comment on :
 
 			<?php echo $this->Html->link($comment['Post']['title'], array('controller' => 'posts', 'action' => 'view', $comment['Post']['id'], 'admin'=>false)); ?>
  <?php echo $this->Time->timeAgoInWords($comment['Comment']['added']);?>

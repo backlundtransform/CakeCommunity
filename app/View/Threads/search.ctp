@@ -1,12 +1,4 @@
-<br />
 
-<?php  if ($current_user['roles'] == 'admin') {
-	    
-	echo $this->Html->link(__('Submit'), array('action' => 'add'), array('Class' => 'Buttons'));
- 
-   	}
-
- ?><br />
 	
 	<?php foreach ($posts as $post): ?>
 	<?php    $commentnumber  = $this->requestAction('Posts/view/'.$post['Post']['id']); ?>
@@ -32,7 +24,7 @@
 		
 		<div class="eDetails">
 
-Views: <?php echo $post['Post']['views']; ?> | Added by: <?php echo $this->Html->link($post['User']['username'], array('controller' => 'users', 'action' => 'view', $post['User']['id'])); ?>
+Views: <?php echo $post['Post']['views']; ?> | Added by: <?php echo $this->Html->link($post['User']['name'], array('controller' => 'users', 'action' => 'view', $post['User']['id'])); ?>
 
 | Creation time:   <?php echo $post['Post']['created']; ?> |
 
@@ -48,11 +40,11 @@ echo $this->Html->link('Comments :'.count($commentnumber), array( 'action' => 'v
 			<?php 
 				if ($current_user['roles'] == 'admin') {
 	    		
-					echo $this->Html->link($this->Html->image('p_edit.gif'), array('action' => 'edit', $post['Post']['id']), array('escape' => false));?>
+					echo $this->Html->link(__('Edit'), array('action' => 'edit', $post['Post']['id']));?>
 					
-				
+					<br>
 					
-					<?php  echo $this->Html->link($this->Html->image('p_delete.gif'), array('action' => 'delete', $post['Post']['id']), array('escape' => false), __('Are you sure you want to delete # %s?', $post['Post']['id']));
+					<?php  echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $post['Post']['id']), null, __('Are you sure you want to delete # %s?', $post['Post']['id']));
 			
 	
  

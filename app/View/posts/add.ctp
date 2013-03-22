@@ -21,7 +21,7 @@
                                   ));
 		
 
-		echo $this->Form->input('user_id');
+			echo $this->Form->hidden('user_id', array('value'=>$current_user['id']));
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

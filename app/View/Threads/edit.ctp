@@ -5,7 +5,7 @@
         'label' => false,
         'div' => false))); ?>
 	<fieldset>
-		<legend><?php echo __('Edit Post'); ?></legend>
+		<legend><?php echo __('Edit Thread'); ?></legend>
 	<?php
 		echo $this->Form->input('id');
 			echo 'Test';

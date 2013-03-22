@@ -4,12 +4,14 @@
 body {margin:0;padding:0; background:#06080b;}
 a {outline: 0;}
 
-#topsection{
-height: 210px; /*Height of top section*/
+header{
+height: 210px; 
+
+ background: url('/CakeCommunity/img/cake.png') no-repeat center;
 
 }
 
-#topsection a{
+header a{
 
 color:#E4FAFD;
 
@@ -38,6 +40,8 @@ background-image: -o-linear-gradient(bottom, rgb(174,199,229) 16%, rgb(86,110,13
 background-image: -moz-linear-gradient(bottom, rgb(174,199,229) 16%, rgb(86,110,134) 63%, rgb(174,199,229) 91%);
 background-image: -webkit-linear-gradient(bottom, rgb(174,199,229) 16%, rgb(86,110,134) 63%, rgb(174,199,229) 91%);
 background-image: -ms-linear-gradient(bottom, rgb(174,199,229) 16%, rgb(86,110,134) 63%, rgb(174,199,229) 91%);
+ filter:  progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#9BD1F2', endColorstr='#34A0E3'); /* IE6 & IE7 */
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#e6e6e6', endColorstr='#CCCCCC')"; /* IE8 */
 
 background-image: -webkit-gradient(
 	linear,
@@ -55,7 +59,7 @@ background-image: -webkit-gradient(
     text-align: center;
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
 }
-#menu{
+nav {
  color: #ffffff;
  padding-top: 152px;
  margin: auto;
@@ -73,7 +77,13 @@ Save
 
 
 #contentcolumn{
-margin: 0 200px 0px 185px; /*Margins for content column. Should be "0 RightColumnWidth 0 LeftColumnWidth*/
+margin: 0 200px 0px 185px; 
+border-top: 1px solid; border-color: #8C8C9C; font-size: 10pt;
+
+}
+
+#contentcolumn2{
+margin-left: 180px; 
 border-top: 1px solid; border-color: #8C8C9C; font-size: 10pt;
 
 }
@@ -81,7 +91,7 @@ border-top: 1px solid; border-color: #8C8C9C; font-size: 10pt;
 
 #leftcolumn{
 float: left;
-width: 185px; /*Width of left column*/
+width: 185px; 
 margin-left: -100%;
  font-size: 9pt;
  background: #0a1119;
@@ -93,22 +103,22 @@ margin-left: -100%;
 
 #rightcolumn{
 float: left;
-width: 200px; /*Width of right column*/
-margin-left: -200px; /*Set left marginto -(RightColumnWidth)*/
+width: 200px;
+margin-left: -200px;
 font-size: 8pt;
 background: #0a1119;
 -moz-border-radius-bottomright: 10px; -moz-border-radius-bottomleft: 10px; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;}
 
 
 .innertube{
-margin: 12px; /*Margins for inner DIV inside each column (to provide padding)*/
+margin: 12px;
 margin-top: 0;
 }
 
 
 
 
-#footer{
+footer{
 clear: left;
 width: 100%;
 
@@ -180,7 +190,9 @@ a:link {text-decoration:none; color:#E4FAFD;}
 a:active {text-decoration:none; color:#E4FAFD;}
 a:visited {text-decoration:none; color:#E4FAFD;}
 a:hover {text-decoration:underline; color:#FFFFFF;}
+.threadtop {padding:10px; background:#161A1D;}
 
+.thread {padding:10px; background-color: #2D343A; width:100%; border-bottom: solid 1px #fff; height: 30px;}
 td, body {font-family:verdana,arial,helvetica; font-size:8pt; color:#B8B7B6;}
 form {padding:0px;margin:0px;}
 input,textarea,select {vertical-align:middle; font-size:8pt; font-family:verdana,arial,helvetica;}
@@ -196,15 +208,36 @@ input,textarea,select {vertical-align:middle; font-size:8pt; font-family:verdana
 /* Comments Style */
 
 
-.cMessage {background:#2D343A; border-top: 1px solid; border-color: #8C8C9C;min-height: 160px; font-size:8pt; }
+.cMessage {background:#2D343A; border-top: 1px solid; border-color: #8C8C9C; min-height: 160px; font-size:8pt; }
 
+div.popup {
+  display: none;
+  position: absolute;
+  width: 280px;
+  padding: 0px;
+ 
+  border: 1px solid #1a1a1a;
+  font-size: 90%;
+}
 
-.ctop {background:#2D343A;color:#000000;height:23px;font-size:10pt; width: 100% border-top: 1px solid; border-color: #8C8C9C;}
-.cinfo {background:#2D343A;text-align:center;padding:5px;position: relative; float: left; letter-spacing: 0pt; word-spacing: 0pt; vertical-align: top; width: 120px; min-height: 80px;}
-.cinfo img {-moz-border-radius: 8px; -webkit-border-radius: 8px; border-radius: 8px;}
+div2.popup {
+  display: none;
+  position: absolute;
+  width: 280px;
+  padding: 0px;
+ 
+  border: 1px solid #1a1a1a;
+  font-size: 90%;
+}
+
+.cinfo {text-align:center;padding:5px;position: relative; float: left; letter-spacing: 0pt; word-spacing: 0pt;  clear:both; top:55px; width: 120px; min-height: 40px;}
+.cname {background:#2D343A;text-align:center;padding:5px;position: relative; float: left; letter-spacing: 0pt; word-spacing: 0pt; width: 120px; height: 50px;}
+.cname img {-moz-border-radius: 8px; -webkit-border-radius: 8px; border-radius: 8px; max-height:80px; max-width:60px;}
 .cpost {margin:8px; padding:5px; text-align: left; vertical-align: top; background:#151e22;-webkit-border-radius: 8px;
 -moz-border-radius: 8px;
-border-radius: 8px; min-height: 120px; font-size:10pt !important;}
+border-radius: 8px; min-height: 150px; font-size:10pt !important; margin-left:130px;
+
+}
 .cpost li{margin-left:25px;}
 
 #comment {display:none;}
@@ -287,10 +320,11 @@ background-image: -webkit-linear-gradient(top, #8e909e, #4f5268); background-ima
  display: none;
 
 }
-#dialog{ 
 
-margin: 20px;
-
+.ui-dialog
+{
+position:fixed;
+padding-left:20px;
 color:#000000;
  font-family: arial,verdana,sans-serif;
 background-image: linear-gradient(bottom, rgb(165,172,179) 19%, rgb(151,170,184) 55%, rgb(175,183,199) 87%);
@@ -307,8 +341,8 @@ background-image: -webkit-gradient(
 	color-stop(0.55, rgb(151,170,184)),
 	color-stop(0.87, rgb(175,183,199))
 );
-
 }
+
 #userbar{
  display: block;
  font-family: arial,verdana,sans-serif;
@@ -457,13 +491,13 @@ padding: 4px 10px 4px 10px;
 
 
 
-#menu ul {
+nav ul {
  font-family: arial,verdana,sans-serif;
  font-size: 14px;
  font-weight: bold; 
 }
 
-#menu li {
+nav li {
  display: block;
  float: left;
  padding: 4px 10px 4px 10px;
@@ -474,7 +508,7 @@ padding: 4px 10px 4px 10px;
 
 }
 
-#menu li a {
+nav li a {
  background-color: inherit;
  color: #bbbbbb;
  text-decoration: none;
@@ -482,7 +516,7 @@ padding: 4px 10px 4px 10px;
  
 }
 
-#menu li ul {
+nav li ul {
  background-color: #090D11;
  border: 2px inset #FFFFFF;
  color: inherit;
@@ -497,11 +531,11 @@ padding: 4px 10px 4px 10px;
  
 }
 
-#menu li:hover ul {
+nav li:hover ul {
  display: block; text-decoration: none;
 }
 
-#menu li li {
+nav li li {
  display: block;
  padding: 0px;
  width: 150px;
@@ -509,7 +543,7 @@ padding: 4px 10px 4px 10px;
  
 }
 
-#menu li li:hover {
+nav li li:hover {
  background-color: #999999;
  color: inherit;
  text-decoration: none;
@@ -520,7 +554,7 @@ padding: 4px 10px 4px 10px;
  
  }
 
-#menu li li a {
+nav li li a {
  background-color: inherit;
  border: 0px;
  color: #FFFFFF;
@@ -573,5 +607,3 @@ padding: 4px 10px 4px 10px;
 	background: #00000;
 	color: #c73e14;
 }
-
-

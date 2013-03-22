@@ -2,7 +2,7 @@
 class User extends AppModel {
 	var $createField = 'Registred'; 
 	public $name = 'User';
-	public $displayField = 'name';
+	public $displayField = 'username';
 	
  
 

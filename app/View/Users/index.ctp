@@ -9,12 +9,17 @@
 	<table cellpadding="0" cellspacing="60">
 	<tr>
 			
-			<th><?php echo $this->Paginator->sort('username'); ?></th>
-                         <th><?php echo $this->Paginator->sort('image_url'); ?></th>
+			<th><?php echo $this->Paginator->sort('username', 'Name'); ?></th>
+                         <th><?php echo $this->Paginator->sort('image_url', 'Avatar'); ?></th>
 
-			<th><?php echo $this->Paginator->sort('roles'); ?></th>
+			<th><?php echo $this->Paginator->sort('roles', 'Group' ); ?></th>
 			<th><?php echo $this->Paginator->sort('Registred'); ?></th>
-				<th>Comments <br></th>
+				<th><?php echo $this->Paginator->sort('Messages'); ?>
+				
+				
+				
+				
+				 <br></th>
 			
 	</tr>
 	<?php foreach ($users as $user): ?>
@@ -22,10 +27,10 @@
 
 		<td>	<?php echo $this->Html->link($user['User']['username'], array('action' => 'view', $user['User']['id'])); ?>&nbsp;&nbsp;&nbsp;</td>
                         <td>	<?php echo $this->Html->image($user['User']['image_url'], array('alt' => 'Avatar', 'width' => '30px')); ?> </td>
-		<td><?php echo h($user['User']['roles']); ?>&nbsp;&nbsp;&nbsp;</td>
-		<td><?php echo h($user['User']['Registred']); ?>&nbsp;&nbsp;&nbsp;</td>
-		  <td>	<?php    $comments  = $this->requestAction('Comments/index/'.$user['User']['id'] ); ?>
-<?php echo count($comments) ?>&nbsp;&nbsp;&nbsp;</td>
+		<td><?php echo $user['User']['roles']; ?>&nbsp;&nbsp;&nbsp;</td>
+		<td><?php echo $user['User']['Registred']; ?>&nbsp;&nbsp;&nbsp;</td>
+		  <td>	
+<?php echo $user['User']['Messages']; ?>&nbsp;&nbsp;&nbsp;</td>
 
 		<td class="actions">
 		

@@ -8,24 +8,33 @@
  </div><div class="eMessage" style="text-align: left; clear: both; padding-top: 2px; padding-bottom: 2px;">
       <?php echo $post['Post']['content']; ?></div></div> 
  <div class="eDetails" style="clear: both;">
-Views: <?php echo $post['Post']['views']; ?> | Added by: <?php echo $this->Html->link($post['User']['name'], array('controller' => 'users', 'action' => 'view', $post['User']['id'])); ?> | Creation time:   <?php echo $post['Post']['created']; ?>
+Views: <?php echo $post['Post']['views']; ?> | Added by: <?php echo $this->Html->link($post['User']['username'], array('controller' => 'users', 'action' => 'view', $post['User']['id'])); ?> | Creation time:   <?php echo $post['Post']['created']; ?>
 
 
 
   </div>
-
-
-
-
-		<?php if (!empty($post['Comment']) ): ?>
+	<?php if (!empty($post['Comment']) ): ?>
 
                 
-            <?php foreach ($paginate as $key => $comment): ?>
-                        <div class="cMessage">Message: <?php echo $key+1; ?> | Added: <?php echo $this->Time->timeAgoInWords($paginate[$key]['Comment']['added']);?><div class="cinfo"><br><?php 
+             <?php foreach ($paginate as $key => $thread_answer): ?>
+                        <div class="cMessage">Message: <?php 
+                        
+                        echo ($this->params['paging']['Comment']['page']-1)*15+$key+2; ?> | Added: <?php echo $this->Time->timeAgoInWords($paginate[$key]['Comment']['added']);?><div class="cname"><br><?php
                         echo $this->Html->image($paginate[$key]['User']['image_url'], array('alt' => 'Avatar' , 'width' => '60px'));?>
                         <br>
-                       <?php  echo $this->Html->link($paginate[$key]['User']['username'], array('controller' => 'users', 'action' => 'view', $paginate[$key]['User']['id'])); ?> </div>
-                <div class="cpost" style="margin-left:130px;" ><?php echo  $paginate[$key]['Comment']['content']; ?> </div>
+                       <?php  echo $this->Html->link($paginate[$key]['User']['username'], array('controller' => 'users', 'action' => 'view', $paginate[$key]['User']['id'])); ?> 
+                       </div>
+                       <div class="cinfo">
+                       <br>
+                     
+                       <?php echo $paginate[$key]['User']['roles'];?>
+                       <br>Messages: <?php echo $paginate[$key]['User']['Messages'];?><br>
+                         <?php  if($paginate[$key]['User']['online']):?>Online<?php  else:?>
+                    Offline
+                         <?php  endif?>
+                       
+                       </div>
+                <div class="cpost" ><?php echo  $paginate[$key]['Comment']['content']; ?> </div>
 
 						   
 						           <div class="commentadmin">
@@ -54,20 +63,24 @@ Views: <?php echo $post['Post']['views']; ?> | Added by: <?php echo $this->Html-
                                                                           <?php
                                                                           
 
-                                                                          
+
 
                                                                            echo  $this->Html->link($this->Html->image('p_quote.gif'),'#post', array('class' => 'quote', 'escape' => false)); ?>
          </div>
                                                    
                                                    <?php endif ?>
                                            
-                                                 </div>
+                                              <br>   </div>
 
 
                         
 
             
             <?php endforeach; ?>
+
+                        
+
+        
 
         <?php else: ?>
         <p>No comments...</p>

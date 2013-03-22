@@ -36,10 +36,10 @@
 		echo $this->Html->script('jQuery');
 		echo $this->Html->script('cakejs');
 		echo $this->Html->script('jquery-ui-1.10.1.custom/js/jquery-ui-1.10.1.custom.min');
-		
+
 	 if (isset($current_user['roles']) && $current_user['roles'] != 'user') {
 		echo $this->Html->script('ckeditor/ckeditor');
-		 
+
 	 }
 
 
@@ -50,56 +50,24 @@
 	<div id="maincontainer">
 
 
-<div id="topsection"><div class="innertube"> 
-
- <?php if ($logged_in): ?>
-
-
+<header>  <div class="innertube"> 
+  <?php echo $this->element('userbar');?> 
  
- <div id="userbar"><ul>
-   <li> 
-   
-   
-   <?php echo $current_user['username']; ?>
-     <ul>
-     <li><?php echo $this->Html->link('Profile', array('controller'=>'users', 'action'=>'view', $current_user['id'],  'admin'=>false)); ?></li>
-    <li><?php echo $this->Html->link('Logout', array('controller'=>'users', 'action'=>'Logout', 'admin'=> false)); ?> </li>
-     </ul>
-   </li>
-  <?php if (isset($current_user['roles']) && $current_user['roles'] == 'admin'):?>
- <li><?php echo $this->Html->link('Comment management', array('controller'=>'comments', 'action'=>'admin_index', 'admin'=>true)); ?></li>
- <li>
- Category management
-  <ul>
-  <li><?php echo $this->Html->link('Posts', array('controller'=>'postcats', 'action'=>'admin_index', 'admin'=>true)); ?> </li>
- </ul>
- </li>
- <?php endif ?>
- <?php    $newmessage  = $this->requestAction('Messages/inbox/'); ?>
+			</div> <nav>  <ul>
+		<li><?php echo $this->Html->link(__('Posts'), array('controller' => 'posts', 'action' => 'index', 'admin'=>false)); ?> </li>
+		  <li><?php echo $this->Html->link(__('Threads'), array('controller' => 'Threads', 'action' => 'index', 'admin'=>false)); ?> </li>
 
- 
-  <li><?php echo 'Inbox('.count($newmessage).')';?>
-  
-   <ul>
-   <li><?php echo $this->Html->link('Read Messages', array('controller'=>'Messages', 'action' => 'inbox', 'admin' => false)); ?> </li>
-  <li><?php echo $this->Html->link('Send Messages', array('controller'=>'Messages', 'action' => 'compose', 'admin' => false)); ?> </li>
- </ul></li>
-   
- </ul></div>
- <?php endif; ?>
-
-			</div><div id='menu'><ul>
-		<li><?php echo $this->Html->link(__('Main'), array('controller' => 'posts', 'action' => 'index', 'admin'=>false)); ?> </li>
-		
 		<li><?php echo $this->Html->link(__('Members'), array('controller' => 'users', 'action' => 'index', 'admin'=>false)); ?> </li>
 		
-	</ul></div></div></div>
+	</ul><nav></div></div></div>
 
-			</div></div></div>
-
+			</div></div></header>
 
 		<div id="contentwrapper">
+ <?php if($this->name =='Posts'):?>
 <div id="contentcolumn">
+   <?php else:?>
+  <div id="contentcolumn2">  <?php endif ?>
 <div class="innertube">
 
 
@@ -115,25 +83,32 @@
 
 </div>  </div>
 
-	<div id="leftcolumn">
-
+	<section id="leftcolumn">
+ 
                     <?php if($this->name =='Posts'):?>
                     
 
 
-         <?php echo $this->element('search');?>
-           <?php endif ?>
-          <div id="dialog">
-        <?php echo $this->element('popup');?></div>
+         <?php echo $this->element('search');?>    <?php endif ?>
+
+
 			<?php echo $this->element('loginform');?>
+			<?php if($this->name =='Posts'):?>
 	  <?php echo $this->element('postcat');?>
+	  <?php endif ?>
 	   <?php echo $this->element('online');?>
-</div><div id="rightcolumn"> <?php echo $this->element('commentswidget');?></div>
+</section>
+
+ <?php if($this->name =='Posts'):?>
+
+<section id="rightcolumn"> <?php echo $this->element('commentswidget');?></div><?php endif ?>   </section >
 
 
-		<div id="footer">
+<div id="dialog">
+        <?php echo $this->element('popup');?></div>
+		<footer>
 
-                  </div>
+                  </footer>
 
 </div>
 

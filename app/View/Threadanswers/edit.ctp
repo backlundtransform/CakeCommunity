@@ -10,8 +10,8 @@
 	<?php
 		echo $this->Form->input('id');
 		echo $this->Form->input('content', array('rows' => '15', 'cols' => '100', 'class'=>'ckeditor')); 
-		echo $this->Form->hidden('user_id');
-		echo $this->Form->hidden('post_id');
+		echo $this->Form->input('user_id');
+		echo $this->Form->input('post_id');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>
