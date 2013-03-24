@@ -4,7 +4,7 @@
 
 		<div class="tables">	<?php echo h($user['User']['username']); ?>  </div>
 
-			<div class="inbox">
+			<div class="profile">
 		<br>
 	
 			
@@ -28,10 +28,10 @@
                    <hr>
 		Group: 	<?php echo h($user['User']['roles']); ?> <br>
 		
-		Comments: 
+		Messages: 
                 
-                 <?php    $comments  = $this->requestAction('Comments/index/'.$user['User']['id'] ); ?>
-                <?php echo count($comments) ?> <br>
+                
+                <?php echo $user['User']['Messages'] ?> <br>
 		<hr>
 
 		<br>	&nbsp;

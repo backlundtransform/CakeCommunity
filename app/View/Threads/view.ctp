@@ -1,19 +1,52 @@
 
      <br> <?php $this->set('title_for_layout', $thread['Thread']['title']);?>
 
+      <?php
+      
+      if ($current_user['roles'] == 'admin') {
+	    if ($thread['Thread']['Sticky']){ 
+              
+              echo $this->Html->link(__('Unstick'), array('action' => 'feature_thread', $thread['Thread']['id'],1), array('Class' => 'Buttons'));
 
+              }else {
+	echo $this->Html->link(__('Stick'), array('action' => 'feature_thread', $thread['Thread']['id'], 0), array('Class' => 'Buttons'));
 
+            }
+            
+            if ($thread['Thread']['Locked']){
+              
+              echo $this->Html->link(__('Unlock'), array('action' => 'lock_thread', $thread['Thread']['id'],1), array('Class' => 'Buttons'));
 
+              }else {
+	echo $this->Html->link(__('Lock'), array('action' => 'lock_thread', $thread['Thread']['id'], 0), array('Class' => 'Buttons'));
+
+            }
+            
+            }
+
+ ?>
+         <br>
+          <br>
  <div class="tables"> <?php echo $thread['Thread']['title']; ?>
  </div> <?php if(!$this->Paginator->hasPrev()): ?>
-    <div class="cMessage">Message: <?php echo 1; ?> | Added: <?php echo $this->Time->timeAgoInWords($thread['Thread']['created']);?><div class="cinfo"><br><?php
+    <div class="cMessage">Message: <?php echo 1; ?> | Added: <?php echo $this->Time->timeAgoInWords($thread['Thread']['created']);?><div class="cname"><br><?php
                         echo $this->Html->image($thread['User']['image_url'], array('alt' => 'Avatar' , 'width' => '60px'));?>
                         <br>
-                       <?php  echo $this->Html->link($thread['User']['username'], array('controller' => 'users', 'action' => 'view', $thread['User']['id'])); ?> </div>
-                <div class="cpost" style="margin-left:130px;" ><?php echo  $thread['Thread']['content']; ?> </div>
+                       <?php  echo $this->Html->link($thread['User']['username'], array('controller' => 'users', 'action' => 'view', $thread['User']['id'])); ?> 
+                       </div>
+                       <div class="cinfo">
+                       <br>   
+                       <?php echo $thread['User']['roles'];?>
+                       <br>Messages: <?php echo $thread['User']['Messages'];?><br>
+                         <?php  if($thread['User']['online']):?>Online<?php  else:?>
+                    Offline
+                         <?php  endif?>
+                       </div>
+                   
+                <div class="cpost"><?php echo  $thread['Thread']['content']; ?> </div>  <div class="commentadmin">
 
 						   
-						           <div class="commentadmin">
+						          
                                                    <?php
 
                       if ($current_user['username']==$thread['User']['username'] || $current_user['roles'] == 'admin'){
@@ -31,39 +64,39 @@
    	}
  
  ?>
-
-						       </div>
+</div>
+						 
 <?php if ($logged_in): ?>
-                                                        <div class="threadquote">
+          <div class="threadquote">
 
-                                                                          <?php
-                                                                          
-
-                                                                          
-
-                                                                           echo  $this->Html->link($this->Html->image('p_quote.gif'),'#post', array('class' => 'quote', 'escape' => false)); ?>
+              <?php echo  $this->Html->link($this->Html->image('p_quote.gif'),'#post', array('class' => 'quote', 'escape' => false)); ?>
          </div>
                                                    
-                                                   <?php endif ?>
+          <?php endif ?>
                                            
-                                                 </div>
-
-  
-  
-
-
-
-
-
-
-              <?php endif; ?>
+        <br>             
+        </div>
+	<?php endif; ?>
 
             <?php foreach ($paginate as $key => $thread_answer): ?>
-                        <div class="cMessage">Message: <?php echo $key+2; ?> | Added: <?php echo $this->Time->timeAgoInWords($paginate[$key]['Threadanswer']['added']);?><div class="cinfo"><br><?php
+                        <div class="cMessage">Message: <?php 
+                        
+                        echo ($this->params['paging']['Threadanswer']['page']-1)*15+$key+2; ?> | Added: <?php echo $this->Time->timeAgoInWords($paginate[$key]['Threadanswer']['added']);?><div class="cname"><br><?php
                         echo $this->Html->image($paginate[$key]['User']['image_url'], array('alt' => 'Avatar' , 'width' => '60px'));?>
                         <br>
-                       <?php  echo $this->Html->link($paginate[$key]['User']['username'], array('controller' => 'users', 'action' => 'view', $paginate[$key]['User']['id'])); ?> </div>
-                <div class="cpost" style="margin-left:130px;" ><?php echo  $paginate[$key]['Threadanswer']['content']; ?> </div>
+                       <?php  echo $this->Html->link($paginate[$key]['User']['username'], array('controller' => 'users', 'action' => 'view', $paginate[$key]['User']['id'])); ?> 
+                       </div>
+                       <div class="cinfo">
+                       <br>
+                     
+                       <?php echo $paginate[$key]['User']['roles'];?>
+                       <br>Messages: <?php echo $paginate[$key]['User']['Messages'];?><br>
+                         <?php  if($paginate[$key]['User']['online']):?>Online<?php  else:?>
+                    Offline
+                         <?php  endif?>
+                       
+                       </div>
+                <div class="cpost" ><?php echo  $paginate[$key]['Threadanswer']['content']; ?> </div>
 
 						   
 						           <div class="commentadmin">
@@ -87,7 +120,7 @@
 
 						       </div>
 <?php if ($logged_in): ?>
-                                                        <div class="quote">
+                                                        <div class="threadquote">
 
                                                                           <?php
                                                                           
@@ -99,7 +132,7 @@
                                                    
                                                    <?php endif ?>
                                            
-                                                 </div>
+                                              <br>   </div>
 
 
                         
@@ -121,10 +154,12 @@
 		echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));
 		}
 	?>
-	</div>
-<?php if ($logged_in): ?>
+	</div>   <a name="post">
+<?php if ($logged_in && !$thread['Thread']['Locked']): ?>
+
+
                  <table border="0" width="100%" cellspacing="1" cellpadding="2" class="commTable">
-     <a name="post">
+  
   <div id="post">
 
 <tr><td class="commTd2" colspan="2"><?php echo $this->Form->create('Threadanswer', array(

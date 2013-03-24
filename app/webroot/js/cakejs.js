@@ -21,7 +21,7 @@ $(document).ready(function() {
     
 
                            var insertText = $(this).prevUntil(".cinfo").text();
-                            var username = $(this).prevUntil(".cMessage").first().prev().prev().text();
+                            var username = $(this).prevUntil('cMessage').first().prev().prev().prev().text();
 
 
         CKEDITOR.instances.ThreadanswerContent.setData('Quote('+username +')<div class="quoteMessage">'+insertText+'</div>');
@@ -37,7 +37,7 @@ $(document).ready(function() {
     
 
                            var insertText = $(this).prevUntil(".cinfo").text();
-                            var username = $(this).prevUntil(".cMessage").first().prev().prev().text();
+                             var username = $(this).prevUntil('cMessage').first().prev().prev().prev().text();
 
 
         CKEDITOR.instances.CommentContent.setData('Quote('+username +')<div class="quoteMessage">'+insertText+'</div>');
@@ -98,21 +98,12 @@ $(document).ready(function(){
  });
  
  
- //popup
- $(document).ready(function(){
-$("#dialog").dialog({ autoOpen: false });
 
-
-$('a.dialog').click(function() {
-
-$(".hidden").toggle();
-$('#dialog').dialog('open');
-
-});
-});
 
  
- //popup
+
+ 
+	
  $(document).ready(function(){
 $("#dialog").dialog({ autoOpen: false });
 

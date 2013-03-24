@@ -1,6 +1,6 @@
 
 <div class="posts form">
-<?php echo $this->Form->create('Post',array(
+<?php echo $this->Form->create('Thread',array(
              'inputDefaults' => array(
         'label' => false,
         'div' => false))); ?>

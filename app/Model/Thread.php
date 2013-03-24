@@ -5,7 +5,7 @@ App::uses('AppModel', 'Model');
  */
 class Thread extends AppModel {
   
- 
+ var $createField = 'update'; 
 
 
 /**
@@ -66,5 +66,22 @@ public function isOwnedBy($thread, $user) {
 			'counterQuery' => ''
 		)
 	);
+	
+		public function beforeSave($options = array()) {
+		
+		
+	 
+		    $nowDate = date('Y-m-d H:i:s');
+                if ($this->updateField) {
+                        $this->set($this->updateField, $nowDate);
+                }
+                if ($this->createField and !$this->exists()) {
+                        $this->set($this->createField, $nowDate);
+                }
+
+               
+	    return true;
+	}
+	
 
 }

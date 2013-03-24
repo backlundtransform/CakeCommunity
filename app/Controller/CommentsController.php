@@ -86,6 +86,8 @@ class CommentsController extends AppController {
 		
 	
   if ($this->request->is('post')) {
+    $user_id=$this->request->data['Comment']['user_id'];
+     $this->Comment->User->updateAll(array('Messages'=>'Messages+1'), array('id'=>$user_id));
   
   	$this->Comment->create();
 	  if ($this->Auth->user('roles') == 'user'){
@@ -98,6 +100,7 @@ class CommentsController extends AppController {
 		 }
 	
    if ($this->Comment->save($data)) {
+
 
 				 $this->redirect($this->referer());
 

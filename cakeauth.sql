@@ -1,7 +1,5 @@
 
 --
--- Databas: `cakeauth`
---
 
 -- --------------------------------------------------------
 
@@ -16,12 +14,14 @@ CREATE TABLE IF NOT EXISTS `comments` (
   `post_id` int(11) NOT NULL,
   `added` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=80 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=82 ;
 
 --
--- Dumpning av Data i tabell `comments`
---
 
+
+-- --------------------------------------------------------
+
+--
 -- Tabellstruktur `forumcats`
 --
 
@@ -34,6 +34,11 @@ CREATE TABLE IF NOT EXISTS `forumcats` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=25 ;
 
+-- --------------------------------------------------------
+
+--
+-- Tabellstruktur `messages`
+--
 
 CREATE TABLE IF NOT EXISTS `messages` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -45,8 +50,10 @@ CREATE TABLE IF NOT EXISTS `messages` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
+--
 
-
+-- Tabellstruktur `postcat`
+--
 
 CREATE TABLE IF NOT EXISTS `postcat` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -81,10 +88,10 @@ CREATE TABLE IF NOT EXISTS `threadanswers` (
   `thread_id` int(11) NOT NULL,
   `added` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=116 ;
-
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=148 ;
 
 --
+
 
 CREATE TABLE IF NOT EXISTS `threads` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -95,14 +102,22 @@ CREATE TABLE IF NOT EXISTS `threads` (
   `created` datetime NOT NULL,
   `views` int(20) NOT NULL,
   `update` datetime NOT NULL,
+  `Replies` int(11) NOT NULL,
+  `Sticky` tinyint(1) NOT NULL DEFAULT '0',
+  `Locked` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=23 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=25 ;
 
+
+
+-- --------------------------------------------------------
+
+--
+-- Tabellstruktur `users`
 --
 
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(15) NOT NULL,
   `username` varchar(15) NOT NULL,
   `password` varchar(40) NOT NULL,
   `roles` enum('admin','regular') NOT NULL DEFAULT 'regular',
@@ -111,6 +126,11 @@ CREATE TABLE IF NOT EXISTS `users` (
   `Registred` datetime DEFAULT NULL,
   `Presentation` text NOT NULL,
   `online` tinyint(1) NOT NULL DEFAULT '0',
+  `Messages` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=49 ;
+
+--
+-- Dumpning av Data i tabell `users`
+--
 

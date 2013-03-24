@@ -5,7 +5,7 @@ class MessagesController extends AppController {
 $this->ban_check();
         $messages = $this->Message->find('all', array(
             'conditions' => array(
-                'recipient' => $this->Auth->user('name')
+                'recipient' => $this->Auth->user('username')
             )
 
         )

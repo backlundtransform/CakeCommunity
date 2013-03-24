@@ -15,7 +15,7 @@
         foreach ($messages as $key => $message): ?>
                          <?php echo $key+1 ?>
 			<?php echo $this->Html->link($message['Message']['subject'], array( 'action' => 'view', $message['Message']['id'])); ?>
-		        (<?php echo $this->Html->link($message['User']['name'], array( 'controller' => 'User', 'action' => 'view', $message['User']['id'])); ?> )
+		        (<?php echo $this->Html->link($message['User']['username'], array( 'controller' => 'User', 'action' => 'view', $message['User']['id'])); ?> )
                 
                 
 

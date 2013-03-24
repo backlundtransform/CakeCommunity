@@ -13,7 +13,7 @@
 		<td><?php echo $comment['Comment']['id']; ?>&nbsp;</td>
 		<td><?php echo $comment['Comment']['content']; ?>&nbsp;</td>
 		<td>
-			<?php echo $this->Html->link($comment['User']['name'], array('controller' => 'users', 'action' => 'view', $comment['User']['id'], 'admin'=>false)); ?>
+			<?php echo $this->Html->link($comment['User']['username'], array('controller' => 'users', 'action' => 'view', $comment['User']['id'], 'admin'=>false)); ?>
 		</td>
 		<td>
 			<?php echo $this->Html->link($comment['Post']['title'], array('controller' => 'posts', 'action' => 'view', $comment['Post']['id'], 'admin'=>false)); ?>

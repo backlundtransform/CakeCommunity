@@ -12,19 +12,25 @@ class ThreadsController extends AppController {
 
 
 
-/**
- * index method
- *
- * @return void
- */
-
-
 
     public function beforeFilter(){
-     	            $this->Auth->allow('index', 'view', 'add', 'search');
+
+     	              
+     	              
+     	             if ($this->Auth->user('roles') == 'admin'){
+
+
+                         $this->Auth->allow('index', 'view', 'search','feature_thread','lock_thread','featured');
+                     
+                     } else{
+                     
+                         $this->Auth->allow('index', 'view', 'search', 'featured');
+
+
+                     }
 			parent::beforeFilter();
 			
-       
+
 	
      }   
      
@@ -59,23 +65,108 @@ class ThreadsController extends AppController {
     }
 }
 
+
+
+
+        public function feature_thread($id = null, $boolean = null) {
+
+
+	 if ($this->Auth->user('roles') == 'admin'){
+
+
+            if ($boolean==1){
+                    $this->Thread->updateAll(array('thread.Sticky'=> false ),
+    array('thread.id' => $id));
+
+
+                  $this->redirect(array('action' => 'index'));
+
+
+		             	}else{
+                                
+                                  $this->Thread->updateAll(array('thread.Sticky'=> true ),
+    array('thread.id' => $id));
+
+
+                  $this->redirect(array('action' => 'index'));
+                                }
+                                     
+                                     
+                                     
+                                     
+                                     
+                                      } }
+public function lock_thread($id = null, $boolean = null) {
+
+
+	 if ($this->Auth->user('roles') == 'admin'){
+
+
+            if ($boolean==1){
+                    $this->Thread->updateAll(array('thread.Locked'=> false ),
+    array('thread.id' => $id));
+
+
+                  $this->redirect(array('action' => 'index'));
+
+
+		             	}else{
+                                
+                                  $this->Thread->updateAll(array('thread.Locked'=> true ),
+    array('thread.id' => $id));
+
+
+                  $this->redirect(array('action' => 'index'));
+                                }
+                                     
+                                     
+                                     
+                                     
+                                     
+                                      } }
+
+
 	public function index() {
 		$this->ban_check();
-	
-		$this->Thread->recursive = 0;
-		
 
+		$this->Thread->recursive = 1;
+ 	
+
+
+                     
 
 
                $this->paginate = array('order' => 'update DESC');
-
 
 
 		$this->set('threads', $this->paginate());
 	
 		 $this->set('_serialize', array('threads'));
 		
+ 		
+		
 
+		             	}
+		             	
+public function featured() {
+		$this->ban_check();
+
+		$this->Thread->recursive = 1;
+ 	
+
+
+                     
+
+
+               $this->paginate = array('order' => 'update DESC','conditions' => array('Thread.Sticky' => true));
+
+
+		$this->set('threads', $this->paginate());
+	
+		 $this->set('_serialize', array('threads'));
+		
+ 		
+		
 
 		             	}
 	
@@ -89,7 +180,7 @@ class ThreadsController extends AppController {
  */
 	public function view($id = null) {
 		$this->ban_check();
-    	$this->paginate = array('limit'=>5,
+    	$this->paginate = array('limit'=>15,
 			'conditions' => array('Threadanswer.thread_id' => $id)
 		);
 			
@@ -110,15 +201,17 @@ class ThreadsController extends AppController {
                $users = $this->Thread->Threadanswer->User->find('list', array('conditions' => array('username' => $this->Auth->user('username')) ));
 
 		$threads = $this->Thread->find('list', array('conditions' => array('id' => $id) ));
-
+		
 		$this->set(compact('users', 'threads','paginate'));
-                      
-             $threadnumber = $this->Thread->Threadanswer->find('list', array('conditions' => array('Threadanswer.thread_id' => $id)));
-
-			return   $threadnumber;
+		return $lastpost = $this->Thread->Threadanswer->find('all', array('limit'=>1, 'conditions' => array('thread_id' => $id), 'order' => 'added DESC'));
+		
+		
+          return $lastpost;            
+           
 
 	}
-	
+
+
 //
 
 
@@ -133,8 +226,12 @@ class ThreadsController extends AppController {
 		$this->ban_check();
 		
 	
-  if ($this->request->is('post')) {   
-  
+  if ($this->request->is('post')) {
+  	$user_id=$this->request->data['Thread']['user_id']; 
+          
+          $this->Thread->User->updateAll(array('Messages'=>'Messages+1'), array('id'=>$user_id));
+
+
   	$this->Thread->create();
 	  if ($this->Auth->user('roles') == 'user'){
 	 	
@@ -144,7 +241,7 @@ class ThreadsController extends AppController {
 			$data = $this->request->data;
 			
 		 }
-	
+
    if ($this->Thread->save($data)) { 
 
 				 $this->redirect(array('action' => 'index'));

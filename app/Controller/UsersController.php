@@ -79,7 +79,7 @@ public function online() {
                  $this->redirect("/");
              }else{
                
-                  $this->Session->setFlash('Your username/password combination was incorrect');
+                  $this->Session->setFlash('Your name/password combination was incorrect');
 			
             
             $this->redirect(array('controller' => 'users', 'action' => 'login', 'admin'=> false));
