@@ -107,20 +107,25 @@ class PostcatsController extends AppController {
  * @return void
  */
 	public function admin_add() {
+
 	 if (!empty($this->data)) {
             $this->Postcat->save($this->data);
             $this->redirect(array('action'=>'index'));
         } else {
             $parents[0] = "[ No Parent ]";
-            $Categorylist = $this->Postcat->generateTreeList(null, null, null," _ ");
-            if($Categorylist){
-                foreach ($Categorylist as $key=>$value){
+
+              $Category = $this->Postcat->find('list', array('conditions' => array('parent_id' => 0)));
+            if($Category){
+                foreach ($Category as $key=>$value){
+                  
+                    if ($parents[0])
                     $parents[$key] = $value;
-		    }
+      }
 		$this->set(compact('parents'));
+
 	    }
         }
-	}
+	}  
 
 /**
  * edit method
