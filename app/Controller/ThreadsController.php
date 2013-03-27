@@ -24,7 +24,11 @@ class ThreadsController extends AppController {
                      
                      } else{
                      
+<<<<<<< HEAD
                          $this->Auth->allow('index', 'view', 'featured');
+=======
+                         $this->Auth->allow('index', 'view', 'search', 'featured');
+>>>>>>> 9a68e4b438b5fa86b48466ae879b206e2030f595
 
 
                      }
@@ -96,12 +100,78 @@ public function lock_thread($id = null, $boolean = null) {
                                       } }
 
 
+
+
+
+        public function feature_thread($id = null, $boolean = null) {
+
+
+	 if ($this->Auth->user('roles') == 'admin'){
+
+
+            if ($boolean==1){
+                    $this->Thread->updateAll(array('thread.Sticky'=> false ),
+    array('thread.id' => $id));
+
+
+                  $this->redirect(array('action' => 'index'));
+
+
+		             	}else{
+                                
+                                  $this->Thread->updateAll(array('thread.Sticky'=> true ),
+    array('thread.id' => $id));
+
+
+                  $this->redirect(array('action' => 'index'));
+                                }
+                                     
+                                     
+                                     
+                                     
+                                     
+                                      } }
+public function lock_thread($id = null, $boolean = null) {
+
+
+	 if ($this->Auth->user('roles') == 'admin'){
+
+
+            if ($boolean==1){
+                    $this->Thread->updateAll(array('thread.Locked'=> false ),
+    array('thread.id' => $id));
+
+
+                  $this->redirect(array('action' => 'index'));
+
+
+		             	}else{
+                                
+                                  $this->Thread->updateAll(array('thread.Locked'=> true ),
+    array('thread.id' => $id));
+
+
+                  $this->redirect(array('action' => 'index'));
+                                }
+                                     
+                                     
+                                     
+                                     
+                                     
+                                      } }
+
+
 	public function index() {
 		$this->ban_check();
 
 		$this->Thread->recursive = 1;
  	
+<<<<<<< HEAD
 
+=======
+>>>>>>> 9a68e4b438b5fa86b48466ae879b206e2030f595
+
+                     
 
                      
 

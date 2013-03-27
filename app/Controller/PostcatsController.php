@@ -125,9 +125,15 @@ class PostcatsController extends AppController {
  *
  * @return void
  */
+<<<<<<< HEAD
 		public function admin_add() {
 
 if (!empty($this->data)) {
+=======
+	public function admin_add() {
+
+	 if (!empty($this->data)) {
+>>>>>>> 9a68e4b438b5fa86b48466ae879b206e2030f595
             $this->Postcat->save($this->data);
             $this->redirect(array('action'=>'index'));
         } else {
@@ -140,11 +146,19 @@ if (!empty($this->data)) {
                     if ($parents[0])
                     $parents[$key] = $value;
       }
+<<<<<<< HEAD
 $this->set(compact('parents'));
 
 }
         }
 } 
+=======
+		$this->set(compact('parents'));
+
+	    }
+        }
+	}  
+>>>>>>> 9a68e4b438b5fa86b48466ae879b206e2030f595
 
 /**
  * edit method
