@@ -78,8 +78,8 @@ class ThreadanswersController extends AppController {
 		if (!$this->Threadanswer->exists($id)) {
 			throw new NotFoundException(__('Invalid comment'));
 		}
-		$options = array('conditions' => array('Thread_answer.' . $this->Thread_answer->primaryKey => $id));
-		$this->set('Thread_answer', $this->Thread_answer->find('first', $options));
+		$options = array('conditions' => array('Threadanswer.' . $this->Threadanswer->primaryKey => $id));
+		$this->set('threadanswer', $this->Threadanswer->find('first', $options));
 	}
 
 /**
@@ -91,12 +91,15 @@ class ThreadanswersController extends AppController {
 		$this->ban_check();
 
  if ($this->request->is('post')) {
-
+      $locked=$this->request->data['Thread']['Locked'];
+    if(!$locked){
    $thread_id=$this->request->data['Threadanswer']['thread_id'];
          $this->Threadanswer->Thread->query("UPDATE `threads` SET `update`=NOW() WHERE  id= $thread_id");
-		 $this->Threadanswer->Thread->query("UPDATE `threads` SET `Replies`= Replies+1 WHERE  id= $thread_id");
+
+		  $this->Threadanswer->Thread->updateAll(array('Replies'=>'Replies+1'), array('Thread.id'=>$thread_id));
 	$user_id=$this->request->data['Threadanswer']['user_id'];
-         $this->Threadanswer->User->query("UPDATE `users` SET `Messages`= Messages+1 WHERE  id=$user_id");
+
+          $this->Threadanswer->User->updateAll(array('Messages'=>'Messages+1'), array('id'=>$user_id));
 
 
   	$this->Threadanswer->create();
@@ -120,7 +123,7 @@ class ThreadanswersController extends AppController {
 		$threads = $this->Threadanswer->find('list');
 		$this->set(compact('users', 'threads'));
 
-	} 
+	}  }
 /**
  * edit method
  *
@@ -146,13 +149,13 @@ $thread_id = $this->Threadanswer->field('thread_id');
 				$this->Session->setFlash(__('The answer could not be saved. Please, try again.'));
 			}
 		} else {
-			$options = array('conditions' => array('Thread_answer.' . $this->Threadanswer->primaryKey => $id));
+			$options = array('conditions' => array('Threadanswer.' . $this->Threadanswer->primaryKey => $id));
 			
 		
 			$this->request->data = $this->Threadanswer->find('first', $options);
 		}
 		$users = $this->Threadanswer->User->find('list');
-		$threads = $this->Threadanswer->Post->find('list');
+		$threads = $this->Threadanswer->Thread->find('list');
 		$this->set(compact('users', 'threads'));
 	}
 
@@ -173,7 +176,7 @@ $thread_id = $this->Threadanswer->field('thread_id');
 	
 		if ($this->Threadanswer->delete()) {
 			$this->Session->setFlash(__('Thread answer deleted'));
-			 $this->Threadanswer->Thread->query("UPDATE `threads` SET `Replies`=Replies-1 WHERE id= $thread_id");
+	                $this->Threadanswer->Thread->updateAll(array('Replies'=>'Replies-1'), array('Thread.id'=>$thread_id));
 	$this->redirect($this->referer());
 		}
 

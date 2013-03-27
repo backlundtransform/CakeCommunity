@@ -1,5 +1,5 @@
 <?php foreach ($threads as $thread) {
-    unset($thread['Post']);
+    unset($thread['Thread']);
 }
 echo json_encode($thread['Thread']);
 

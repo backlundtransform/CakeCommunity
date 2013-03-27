@@ -13,11 +13,18 @@
      </ul>
    </li>
   <?php if (isset($current_user['roles']) && $current_user['roles'] == 'admin'):?>
+  <li>
+ Content management
+  <ul>
  <li><?php echo $this->Html->link('Comment management', array('controller'=>'comments', 'action'=>'admin_index', 'admin'=>true)); ?></li>
- <li>
- Category management
+  <li><?php echo $this->Html->link('Thread management', array('controller'=>'threadanswers', 'action'=>'admin_index', 'admin'=>true)); ?></li>
+
+
+</ul>
+ <li>Category management
   <ul>
   <li><?php echo $this->Html->link('Posts', array('controller'=>'postcats', 'action'=>'admin_index', 'admin'=>true)); ?> </li>
+  <li><?php echo $this->Html->link('Forum', array('controller'=>'forumcats', 'action'=>'admin_index', 'admin'=>true)); ?> </li>
  </ul>
  </li>
  <?php endif ?>

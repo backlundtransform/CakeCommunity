@@ -17,6 +17,17 @@ color:#E4FAFD;
 
 }
 
+
+.popup{ position:relative; list-style:none; cursor:pointer;}
+.popup li .content{ position:absolute; z-index:10; visibility:hidden; left:0px; right:200px; top:20px;}
+.popup li:hover .content{visibility:visible;}
+
+       .popup li{display: inline-block; }
+
+.popup li .content2{ position:absolute; z-index:10; visibility:hidden; left:-200px; right:0px;top:20px}
+.popup li:hover .content2{visibility:visible;}
+
+
 .commentbubble {
     background-attachment: scroll;
     background-clip: border-box;
@@ -40,7 +51,7 @@ background-image: -o-linear-gradient(bottom, rgb(174,199,229) 16%, rgb(86,110,13
 background-image: -moz-linear-gradient(bottom, rgb(174,199,229) 16%, rgb(86,110,134) 63%, rgb(174,199,229) 91%);
 background-image: -webkit-linear-gradient(bottom, rgb(174,199,229) 16%, rgb(86,110,134) 63%, rgb(174,199,229) 91%);
 background-image: -ms-linear-gradient(bottom, rgb(174,199,229) 16%, rgb(86,110,134) 63%, rgb(174,199,229) 91%);
- filter:  progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#9BD1F2', endColorstr='#34A0E3'); /* IE6 & IE7 */
+ filter:  progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#e6e6e6', endColorstr='#CCCCCC'); /* IE6 & IE7 */
   -ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#e6e6e6', endColorstr='#CCCCCC')"; /* IE8 */
 
 background-image: -webkit-gradient(
@@ -190,9 +201,9 @@ a:link {text-decoration:none; color:#E4FAFD;}
 a:active {text-decoration:none; color:#E4FAFD;}
 a:visited {text-decoration:none; color:#E4FAFD;}
 a:hover {text-decoration:underline; color:#FFFFFF;}
-.threadtop {padding:10px; background:#161A1D;}
+.threadtop { padding-right:100px; background:#161A1D;}
 
-.thread {padding:10px; background-color: #2D343A; width:100%; border-bottom: solid 1px #fff; height: 30px;}
+.thread { background-color: #2D343A; width:100%; border-bottom: solid 1px #fff; height: 20px;}
 td, body {font-family:verdana,arial,helvetica; font-size:8pt; color:#B8B7B6;}
 form {padding:0px;margin:0px;}
 input,textarea,select {vertical-align:middle; font-size:8pt; font-family:verdana,arial,helvetica;}
@@ -260,32 +271,15 @@ border-radius: 8px; min-height: 150px; font-size:10pt !important; margin-left:13
 
 
 
-.com-tr {
- background-attachment: scroll;
- background-clip: border-box;
- background-color: transparent;
- background-image: url("/post-triangle2.png");
- background-origin: padding-box;
- background-position: 0 0;
- background-repeat: no-repeat;
- background-size: auto auto;
- height: 18px;
- left: -10px;
- overflow-x: hidden;
- overflow-y: hidden;
- position: absolute;
- top: 35px;
- width: 10px;
-}
 
 /* Post Form */
 
-
+ .forumlinks {float:right;}    
 input[value=login], input[name=view], a.Buttons {font-size:8pt;
 position:relative;
  
 display:inline-block;
-
+        margin:5px;
 text-align:center;
 cursor:pointer;
 border:2px solid #999;
@@ -351,7 +345,7 @@ background-image: -o-linear-gradient(bottom, rgb(165,172,179) 19%, rgb(151,170,1
 background-image: -moz-linear-gradient(bottom, rgb(165,172,179) 19%, rgb(151,170,184) 55%, rgb(175,183,199) 87%);
 background-image: -webkit-linear-gradient(bottom, rgb(165,172,179) 19%, rgb(151,170,184) 55%, rgb(175,183,199) 87%);
 background-image: -ms-linear-gradient(bottom, rgb(165,172,179) 19%, rgb(151,170,184) 55%, rgb(175,183,199) 87%);
-
+ filter:  progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#e6e6e6', endColorstr='#CCCCCC'); 
 background-image: -webkit-gradient(
 	linear,
 	left bottom,

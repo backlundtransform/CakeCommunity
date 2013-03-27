@@ -14,53 +14,121 @@ class ThreadsController extends AppController {
 
 
     public function beforeFilter(){
-     	            $this->Auth->allow('index', 'view', 'search');
+
+     	              
+     	              
+     	             if ($this->Auth->user('roles') == 'admin'){
+
+
+                         $this->Auth->allow('index', 'view', 'search','feature_thread','lock_thread','featured');
+                     
+                     } else{
+                     
+                         $this->Auth->allow('index', 'view', 'featured');
+
+
+                     }
 			parent::beforeFilter();
 			
-       
+
 	
      }   
      
-     function search()
-{
-      	$this->ban_check();
-	
-		$this->Thread->recursive = 0;
-
-
-               $this->paginate = array('order' => 'created DESC');
+ 
 
 
 
-		$this->set('threads', $this->paginate());
-		             	
+        public function feature_thread($id = null, $boolean = null) {
 
-  
 
-    if (!empty($this->data)) {
-        $searchstr = $this->data['Thread']['search'];
-        $this->set('searchstring', $this->data['Thread']['search']);
-        $conditions = array(
-            'conditions' => array(
-            'or' => array(
-                "Thread.title LIKE" => "%$searchstr%",
-                "Thread.content LIKE" => "%$searchstr%"
-            )
-            )
-        );
-        $this->set('Threads', $this->Thread->find('all', $conditions));
-    }
-}
+	 if ($this->Auth->user('roles') == 'admin'){
+
+
+            if ($boolean==1){
+                    $this->Thread->updateAll(array('thread.Sticky'=> false ),
+    array('thread.id' => $id));
+
+
+                  $this->redirect(array('action' => 'index'));
+
+
+		             	}else{
+                                
+                                  $this->Thread->updateAll(array('thread.Sticky'=> true ),
+    array('thread.id' => $id));
+
+
+                  $this->redirect(array('action' => 'index'));
+                                }
+                                     
+                                     
+                                     
+                                     
+                                     
+                                      } }
+public function lock_thread($id = null, $boolean = null) {
+
+
+	 if ($this->Auth->user('roles') == 'admin'){
+
+
+            if ($boolean==1){
+                    $this->Thread->updateAll(array('thread.Locked'=> false ),
+    array('thread.id' => $id));
+
+
+                  $this->redirect(array('action' => 'index'));
+
+
+		             	}else{
+                                
+                                  $this->Thread->updateAll(array('thread.Locked'=> true ),
+    array('thread.id' => $id));
+
+
+                  $this->redirect(array('action' => 'index'));
+                                }
+                                     
+                                     
+                                     
+                                     
+                                     
+                                      } }
+
 
 	public function index() {
 		$this->ban_check();
-	
-		$this->Thread->recursive = 1;
-		
 
+		$this->Thread->recursive = 1;
+ 	
+
+
+                     
 
 
                $this->paginate = array('order' => 'update DESC');
+
+
+		$this->set('threads', $this->paginate());
+	
+		 $this->set('_serialize', array('threads'));
+		
+ 		
+		
+
+		             	}
+		             	
+public function featured() {
+		$this->ban_check();
+
+		$this->Thread->recursive = 1;
+ 	
+
+
+                     
+
+
+               $this->paginate = array('order' => 'update DESC','conditions' => array('Thread.Sticky' => true));
 
 
 		$this->set('threads', $this->paginate());
@@ -113,7 +181,7 @@ class ThreadsController extends AppController {
 
 	}
 
-	
+
 //
 
 
@@ -129,9 +197,11 @@ class ThreadsController extends AppController {
 		
 	
   if ($this->request->is('post')) {
-  	$user_id=$this->request->data['Thread']['user_id'];
-         $this->Thread->User->query("UPDATE `users` SET `Messages`=Messages+1 WHERE  id=$user_id");   
-  
+  	$user_id=$this->request->data['Thread']['user_id']; 
+          
+          $this->Thread->User->updateAll(array('Messages'=>'Messages+1'), array('id'=>$user_id));
+
+
   	$this->Thread->create();
 	  if ($this->Auth->user('roles') == 'user'){
 	 	
@@ -141,7 +211,7 @@ class ThreadsController extends AppController {
 			$data = $this->request->data;
 			
 		 }
-	
+
    if ($this->Thread->save($data)) { 
 
 				 $this->redirect(array('action' => 'index'));
@@ -152,9 +222,9 @@ class ThreadsController extends AppController {
 		$users = $this->Thread->User->find('list');
 		$thread = $this->Thread->find('list');
 		$this->set(compact('users', 'thread'));
-			//$category = $this->Thread->Forumcat->generateTreeList(null, null, null,"_");
+			$category = $this->Thread->Forumcat->generateTreeList(null, null, null,"_");
 	
-		//$this->set(compact('category'));
+		$this->set(compact('category'));
 		
 	}
 

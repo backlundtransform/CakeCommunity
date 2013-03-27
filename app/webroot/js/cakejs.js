@@ -101,29 +101,6 @@ $(document).ready(function(){
 
 
  
- //popups
- 
- 
- /*$(function() {
-  var moveLeft = 20;
-  var moveDown = 10;
-
-  $('a.trigger').hover(function(e) {
-  
-  $(this).next().toggleClass('.popup');
-
-
-   
- }, function() {
-   $(this).next('.popup').hide();
-  });
-
- $('a.trigger').mousemove(function(e) {
-  $("div.popup").css('top', e.pageY + moveDown).css('left', e.pageX + moveLeft);
-  	});
-
-	});//
-*/
 
  
 	

@@ -6,12 +6,7 @@
  
 
 
- ?>
-  <span class='forumlinks'>
- 
-
-	    
-[<?php	
+ ?> [<?php
    echo $this->Html->link(__('Featured Threads'), array('action' => 'featured'));
   echo " &#149  ";
 echo $this->Html->link(__('All Threads '), array('action' => 'index'));
@@ -21,7 +16,7 @@ echo $this->Html->link(__('All Threads '), array('action' => 'index'));
 
  ?>]
  
- </span><br />  <br />     <div class="tables"> New Threads</div>
+  <br />  <br />     <div class="tables"> New Threads</div>
   
   	<table cellspacing=0 style="width:100%;">
 	<tr >

@@ -15,8 +15,8 @@
 
  <div class="eTitle">
  
- <?php echo $this->Html->link($post['Post']['title'], array('action' => 'view', $post['Post']['id'])); ?>
-        <span class="commentbubble"> <?php echo $this->Html->link(count($commentnumber), array( 'action' => 'view', $post['Post']['id'])); ?>
+ <?php echo $this->Html->link($post['Post']['title'], array('controller'=>'posts', 'action' => 'view', $post['Post']['id'])); ?>
+        <span class="commentbubble"> <?php echo $this->Html->link(count($commentnumber), array( 'controller'=>'posts', 'action' => 'view', $post['Post']['id'])); ?>
 
 
 </span>
@@ -34,13 +34,13 @@
 
 Views: <?php echo $post['Post']['views']; ?> | Added by: <?php echo $this->Html->link($post['User']['username'], array('controller' => 'users', 'action' => 'view', $post['User']['id'])); ?>
 
-| Creation time:   <?php echo $post['Post']['created']; ?> |
+| Creation time:   <?php echo $this->Time->timeAgoInWords($post['Post']['created']); ?> |
 
 
     <?php
 
 
-echo $this->Html->link('Comments :'.count($commentnumber), array( 'action' => 'view', $post['Post']['id'])); ?>
+echo $this->Html->link('Comments :'.count($commentnumber), array( 'controller'=>'posts', 'action' => 'view', $post['Post']['id'])); ?>
 
 
 
@@ -48,11 +48,11 @@ echo $this->Html->link('Comments :'.count($commentnumber), array( 'action' => 'v
 			<?php 
 				if ($current_user['roles'] == 'admin') {
 	    		
-					echo $this->Html->link($this->Html->image('p_edit.gif'), array('action' => 'edit', $post['Post']['id']), array('escape' => false));?>
+					echo $this->Html->link($this->Html->image('p_edit.gif'), array('controller'=>'posts', 'action' => 'edit', $post['Post']['id']), array('escape' => false));?>
 					
 				
 					
-					<?php  echo $this->Html->link($this->Html->image('p_delete.gif'), array('action' => 'delete', $post['Post']['id']), array('escape' => false), __('Are you sure you want to delete # %s?', $post['Post']['id']));
+					<?php  echo $this->Html->link($this->Html->image('p_delete.gif'), array('controller'=>'posts', 'action' => 'delete', $post['Post']['id']), array('escape' => false), __('Are you sure you want to delete # %s?', $post['Post']['id']));
 			
 	
  

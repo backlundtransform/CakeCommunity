@@ -6,7 +6,7 @@
 
 
 	</tr>
-	<?php if (!empty($Categorylist)): ?>
+<?php if (!empty($Categorylist)): ?>
 	<?php foreach($Categorylist as $key=>$value): ?>
 	<tr>
                 <?php if ($value['Postcat']['parent_id']==0): ?>

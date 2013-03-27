@@ -4,9 +4,9 @@
 	<fieldset>
 		<legend><?php echo __('Edit Postcat'); ?></legend>
 	<?php
-		echo $this->Form->input('id');
+		echo $this->Form->hidden('id');
 		echo $this->Form->input('name');
-		echo $this->Form->input('post_id');
+		echo $this->Form->input('parent_id' , array('selected'=>$this->data['Forumcat']['parent_id']));
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

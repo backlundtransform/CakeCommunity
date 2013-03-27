@@ -1,9 +1,32 @@
 
      <br> <?php $this->set('title_for_layout', $thread['Thread']['title']);?>
 
+      <?php
+      
+      if ($current_user['roles'] == 'admin') {
+	    if ($thread['Thread']['Sticky']){ 
+              
+              echo $this->Html->link(__('Unstick'), array('action' => 'feature_thread', $thread['Thread']['id'],1), array('Class' => 'Buttons'));
 
+              }else {
+	echo $this->Html->link(__('Stick'), array('action' => 'feature_thread', $thread['Thread']['id'], 0), array('Class' => 'Buttons'));
 
+            }
+            
+            if ($thread['Thread']['Locked']){
+              
+              echo $this->Html->link(__('Unlock'), array('action' => 'lock_thread', $thread['Thread']['id'],1), array('Class' => 'Buttons'));
 
+              }else {
+	echo $this->Html->link(__('Lock'), array('action' => 'lock_thread', $thread['Thread']['id'], 0), array('Class' => 'Buttons'));
+
+            }
+            
+            }
+
+ ?>
+         <br>
+          <br>
  <div class="tables"> <?php echo $thread['Thread']['title']; ?>
  </div> <?php if(!$this->Paginator->hasPrev()): ?>
     <div class="cMessage">Message: <?php echo 1; ?> | Added: <?php echo $this->Time->timeAgoInWords($thread['Thread']['created']);?><div class="cname"><br><?php
@@ -132,7 +155,9 @@
 		}
 	?>
 	</div>   <a name="post">
-<?php if ($logged_in): ?>
+<?php if ($logged_in && !$thread['Thread']['Locked']): ?>
+
+
                  <table border="0" width="100%" cellspacing="1" cellpadding="2" class="commTable">
   
   <div id="post">

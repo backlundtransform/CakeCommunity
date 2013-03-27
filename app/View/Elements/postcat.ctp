@@ -1,6 +1,3 @@
-
-
-
 <div class='tables'>Categories</div>
         <div class='innertube'>  <?php $Categorylist = $this->requestAction('Postcats/index');
 
@@ -39,6 +36,3 @@
 	<p>
 
 	</div></div>
-
-
-
