@@ -6,7 +6,7 @@
  
 
 
- ?> [<?php
+ ?> <span class='forumlinks'> [<?php
    echo $this->Html->link(__('Featured Threads'), array('action' => 'featured'));
   echo " &#149  ";
 echo $this->Html->link(__('All Threads '), array('action' => 'index'));
@@ -14,8 +14,8 @@ echo $this->Html->link(__('All Threads '), array('action' => 'index'));
  
 
 
- ?>]
- 
+ ?>]  </span>
+
   <br />  <br />     <div class="tables"> New Threads</div>
   
   	<table cellspacing=0 style="width:100%;">
@@ -188,6 +188,10 @@ for ($i=ceil($thread['Thread']['Replies']/15)-2; $i<=ceil($thread['Thread']['Rep
 	?>
 	</div>
 </div>  
+
+
+
+
 
 
 
