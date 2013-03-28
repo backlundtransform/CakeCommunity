@@ -1,36 +1,66 @@
+
+
 <?php if (!empty($Categorylist)): ?>
 	<?php foreach($Categorylist as $key=>$value): ?>
-	<tr>
-                <?php if ($value['Forumcat']['parent_id']==0): ?>
-		<td><?php echo $value['Forumcat']['name']; ?>&nbsp;</td>
 
-		<td class="actions">
-			<?php echo $this->Html->link(__('View'), array('action' => 'main_view', 'admin' => false, $value['Forumcat']['id'])); ?>
-		</td>
-	</tr>  
-	 <?php 
+                <?php if ($value['Forumcat']['parent_id']==0): ?>
+
+                              <br><br>
+		<div class="tables">	<?php echo $this->Html->link($value['Forumcat']['name'], array('action' => 'main_view', 'admin' => false, $value['Forumcat']['id'])); ?>
+
+                 </div>
+                        <table class="threadtop" align="right"><tr>
+  <td>      Forum   </td> <td width="25%">      Threads   </td>
+                                    </tr>
+
+
+                              </table>
+       	 <?php
             $parent=$value['Forumcat']['id'];
          
          endif ?>
 
 
 
-	          <?php if ($parent==$value['Forumcat']['parent_id']): ?>
-	 	<td><li><?php echo $value['Forumcat']['name']; ?></td>
 
-		<td class="actions">
-			<?php echo $this->Html->link(__('View'), array('action' => 'view', 'admin' => false, $value['Forumcat']['id'])); ?>
-		
-		</td>
-	</tr>         <?php endif ?>
+
+
+
+
+
+          <?php if ($parent==$value['Forumcat']['parent_id']): ?>
+                       <table class="thread" ><tr>
+  <td>
+
+                            <?php echo $this->Html->link($value['Forumcat']['name'], array('action' => 'view', 'admin' => false, $value['Forumcat']['id'])); ?>
+                                      <br>
+                                     
+                                      </td>  <td width="30%">   <?php $Forumcat = $this->requestAction('forumcats/view/'. $value['Forumcat']['id'].'');
+
+
+       ?>
+              <?php if (!empty($Forumcat)): ?>
+              <?php echo count($Forumcat['Thread']['id'] );  ?>
+              <?php else: ?>  0
+                 <?php endif ?>
+
+       
+         </td>
+                                    </tr>
+
+
+                              </table>
+                            
+		        <?php endif ?>
 
 
 
 <?php endforeach; ?>
 <?php endif ?>
-	</table>
+
+
 	<p>
 
-	</div>
-</div>
+
 <br>
+
