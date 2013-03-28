@@ -14,6 +14,10 @@
    echo $this->Html->link(__('Featured Threads'), array('controller' => 'threads', 'action' => 'featured'));
   echo " &#149  ";
 echo $this->Html->link(__('All Threads '), array('controller' => 'threads', 'action' => 'index'));
+echo " &#149  ";
+echo $this->Html->link(__('Categories '), array('controller' => 'forumcats','action' => 'index'));
+
+
 
  
 
@@ -197,5 +201,7 @@ for ($i=ceil($thread['Thread']['Replies']/15)-2; $i<=ceil($thread['Thread']['Rep
 	?>
 	</div>
 </div>  
+
+	
 
 	
