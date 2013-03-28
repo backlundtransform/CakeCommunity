@@ -1,5 +1,4 @@
 
-
 <?php if (!empty($Categorylist)): ?>
 	<?php foreach($Categorylist as $key=>$value): ?>
 
@@ -10,7 +9,7 @@
 
                  </div>
                         <table class="threadtop" align="right"><tr>
-  <td>      Forum   </td> <td width="25%">      Threads   </td>
+  <td>      Forum   </td> <td >      Threads   </td>
                                     </tr>
 
 
