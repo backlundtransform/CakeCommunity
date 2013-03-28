@@ -1,7 +1,7 @@
 <?php
 App::uses('AppController', 'Controller');
 /**
- * Postcats Controller
+ * 
  *
  * @property Forumcat $Forumcat
  */
@@ -24,18 +24,7 @@ class ForumcatsController extends AppController {
      }
    
    
-    public function category() {
- 	$this->ban_check();
-         
 
-		$Categorylist = $this->Forumcat->children();
-
-	                $this->set(compact('Categorylist'));
-
-
-            	return  $Categorylist;
-		
-	}
  public function index() {
  	$this->ban_check();
          
@@ -113,6 +102,7 @@ class ForumcatsController extends AppController {
 				)
 			)
 		);
+		return   $Forumcat;
 		
 		
 	}
