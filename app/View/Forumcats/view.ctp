@@ -1,7 +1,7 @@
 
 <?php
 	    
-	echo $this->Html->link(__('New Topic'), array('Controller' => 'threads', 'action' => 'add'), array('Class' => 'Buttons'));
+	echo $this->Html->link(__('New Topic'), array('controller' => 'threads', 'action' => 'add'), array('Class' => 'Buttons'));
  
 
 
@@ -11,9 +11,9 @@
 
 	    
 [<?php	
-   echo $this->Html->link(__('Featured Threads'), array('Controller' => 'threads', 'action' => 'featured'));
+   echo $this->Html->link(__('Featured Threads'), array('controller' => 'threads', 'action' => 'featured'));
   echo " &#149  ";
-echo $this->Html->link(__('All Threads '), array('Controller' => 'threads', 'action' => 'index'));
+echo $this->Html->link(__('All Threads '), array('controller' => 'threads', 'action' => 'index'));
 
  
 
