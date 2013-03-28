@@ -8,19 +8,22 @@
 
  ?>
   <span class='forumlinks'>
- 
+
 
 	    
 [<?php	
    echo $this->Html->link(__('Featured Threads'), array('action' => 'featured'));
   echo " &#149  ";
 echo $this->Html->link(__('All Threads '), array('action' => 'index'));
+echo " &#149  ";
+echo $this->Html->link(__('Categories '), array('controller' => 'forumcats','action' => 'index'));
+
 
  
 
 
  ?>]
- 
+
  </span><br />  <br />     <div class="tables"> New Threads</div>
   
   	<table cellspacing=0 style="width:100%;">
