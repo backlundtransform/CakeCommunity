@@ -1,8 +1,7 @@
-<br />
 
 <?php
 	    
-	echo $this->Html->link(__('New Topic'), array('controller' => 'thread', 'action' => 'add'), array('Class' => 'Buttons'));
+	echo $this->Html->link(__('New Topic'), array('controller' => 'threads', 'action' => 'add'), array('Class' => 'Buttons'));
  
 
 
@@ -12,9 +11,13 @@
 
 	    
 [<?php	
-   echo $this->Html->link(__('Featured Threads'), array('controller' => 'thread', 'action' => 'featured'));
+   echo $this->Html->link(__('Featured Threads'), array('controller' => 'threads', 'action' => 'featured'));
   echo " &#149  ";
-echo $this->Html->link(__('All Threads '), array('controller' => 'thread', 'action' => 'index'));
+echo $this->Html->link(__('All Threads '), array('controller' => 'threads', 'action' => 'index'));
+echo " &#149  ";
+echo $this->Html->link(__('Categories '), array('controller' => 'forumcats','action' => 'index'));
+
+
 
  
 
@@ -35,9 +38,12 @@ echo $this->Html->link(__('All Threads '), array('controller' => 'thread', 'acti
 
 
 	</tr>
-	<?php if (!empty($Forumcat)): ?>
+	<?php 
+	
+	if (!empty($Forumcat)): ?>
 
-	<?php foreach ($Forumcat as $key => $thread): ?>
+	<?php
+		foreach ($Forumcat as $thread): ?>
 		<tr>
 
 		<td class="thread">
@@ -53,7 +59,7 @@ echo $this->Html->link(__('All Threads '), array('controller' => 'thread', 'acti
           echo $this->Html->image("/img/locked.png", array('escape' => false));
           }else{
             echo $this->Html->image("/img/post.gif", array('escape' => false));
-                                          }?> <b><?php echo $this->Html->link($thread['Thread']['title'], array('action' => 'view', $thread['Thread']['id'])); ?></b>
+                                          }?> <b><?php echo $this->Html->link($thread['Thread']['title'], array('controller' => 'threads', 'action' => 'view', $thread['Thread']['id'])); ?></b>
 
               <span class="content">  <div class="cMessage">Message: <?php echo 1; ?> | Added: <?php echo $this->Time->timeAgoInWords($thread['Thread']['created']);?><div class="cname"><br><?php
                         echo $this->Html->image($thread['User']['image_url'], array('alt' => 'Avatar' , 'width' => '60px'));?>
@@ -78,7 +84,7 @@ echo $this->Html->link(__('All Threads '), array('controller' => 'thread', 'acti
 for ($i=1; $i<=ceil($thread['Thread']['Replies']/15)+1; $i++)
   {
   	if($i>1){echo '|';}
-  echo $this->Html->link($i, array('action' => 'view', $thread['Thread']['id'],  "page" => $i ));
+  echo $this->Html->link($i, array('controller' => 'threads', 'action' => 'view', $thread['Thread']['id'],  "page" => $i ));
   }
 ?>]
 
@@ -87,18 +93,18 @@ for ($i=1; $i<=ceil($thread['Thread']['Replies']/15)+1; $i++)
 
 [<?php
 
- echo $this->Html->link(1, array('action' => 'view', $thread['Thread']['id'],  "page" => 1 ));
+ echo $this->Html->link(1, array('controller' => 'threads', 'action' => 'view', $thread['Thread']['id'],  "page" => 1 ));
  echo '|';
- echo $this->Html->link(2, array('action' => 'view', $thread['Thread']['id'],  "page" => 2 )); 
+ echo $this->Html->link(2, array('controller' => 'threads', 'action' => 'view', $thread['Thread']['id'],  "page" => 2 )); 
  echo '|';
-  echo $this->Html->link(3, array('action' => 'view', $thread['Thread']['id'],  "page" => 3 ));
+  echo $this->Html->link(3, array('controller' => 'threads', 'action' => 'view', $thread['Thread']['id'],  "page" => 3 ));
 
 ?>...<?php
 for ($i=ceil($thread['Thread']['Replies']/15)-2; $i<=ceil($thread['Thread']['Replies']/15); $i++)
   {
   	
 	if($i>ceil($thread['Thread']['Replies']/15)-2){echo '|';}
-  echo $this->Html->link((int)$i, array('action' => 'view', $thread['Thread']['id'],  "page" => (int)$i ));
+  echo $this->Html->link((int)$i, array('controller' => 'threads', 'action' => 'view', $thread['Thread']['id'],  "page" => (int)$i ));
   }
 ?>]
 		
@@ -167,12 +173,12 @@ for ($i=ceil($thread['Thread']['Replies']/15)-2; $i<=ceil($thread['Thread']['Rep
 		
 	</tr>
 
-<?php endforeach; ?>
+<?php endforeach; ?><?php endif; ?> 
 	</table>
  
 
 	
-<?php endif; ?>
+
 
 
 
@@ -194,7 +200,4 @@ for ($i=ceil($thread['Thread']['Replies']/15)-2; $i<=ceil($thread['Thread']['Rep
 			}
 	?>
 	</div>
-</div>  
-
-
-	
+</div>
