@@ -44,6 +44,7 @@ color:#E4FAFD;
     text-align: center;
     width: 37px;
 }
+.tables a {color: #000000 !important; }
 
 .tables {
     background-image: linear-gradient(bottom, rgb(174,199,229) 16%, rgb(86,110,134) 63%, rgb(174,199,229) 91%);
@@ -202,6 +203,7 @@ a:active {text-decoration:none; color:#E4FAFD;}
 a:visited {text-decoration:none; color:#E4FAFD;}
 a:hover {text-decoration:underline; color:#FFFFFF;}
 .threadtop { padding-right:100px; background:#161A1D;}
+table{width:100%;}
 
 .thread { background-color: #2D343A; width:100%; border-bottom: solid 1px #fff; height: 20px;}
 td, body {font-family:verdana,arial,helvetica; font-size:8pt; color:#B8B7B6;}
@@ -231,15 +233,7 @@ div.popup {
   font-size: 90%;
 }
 
-div2.popup {
-  display: none;
-  position: absolute;
-  width: 280px;
-  padding: 0px;
- 
-  border: 1px solid #1a1a1a;
-  font-size: 90%;
-}
+
 
 .cinfo {text-align:center;padding:5px;position: relative; float: left; letter-spacing: 0pt; word-spacing: 0pt;  clear:both; top:55px; width: 120px; min-height: 40px;}
 .cname {background:#2D343A;text-align:center;padding:5px;position: relative; float: left; letter-spacing: 0pt; word-spacing: 0pt; width: 120px; height: 50px;}
