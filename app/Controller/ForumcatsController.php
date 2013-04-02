@@ -170,13 +170,12 @@ class ForumcatsController extends AppController {
             $this->redirect(array('action'=>'index'));
         } else {
             if($id==null) die("No ID received");
-           
-		    $this->data = $this->Forumcat->read(null, $id);
+            $this->data = $this->Forumcat->read(null, $id);
             $parents[0] = "[ No Parent ]";
             $Categorylist = $this->Forumcat->generateTreeList(null, null, null," _ ");
             if($Categorylist) 
                 foreach ($Categorylist as $key=>$value)
-                    $parents[$key] = $value;
+                    $parents[1] = $value;
             $this->set(compact('parents'));
         }
 	}
