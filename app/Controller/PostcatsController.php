@@ -162,7 +162,7 @@ $this->set(compact('parents'));
  */
 	public function admin_edit($id = null) {
 	 if (!empty($this->data)) {
-            if($this->Category->save($this->data)==false)
+            if($this->Postcat->save($this->data)==false)
                 $this->Session->setFlash('Error saving Category.');
             $this->redirect(array('action'=>'index'));
         } else {
