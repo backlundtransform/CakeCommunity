@@ -24,7 +24,7 @@
          endif ?>
 
 
-	          <?php if ($parent==$value['Forumcat']['parent_id']): ?>
+	          <?php if (isset($parent)==$value['Forumcat']['parent_id']): ?>
 
 	 	<?php echo $this->Html->image('cat_arrow.png'); ?><?php echo $this->Html->link($value['Forumcat']['name'], array('controller' => 'forumcats', 'action' => 'view', 'admin' => false, $value['Forumcat']['id'])); ?>  <br>
 
