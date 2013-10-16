@@ -65,7 +65,7 @@
 			</div></div></header>
 
 		<div id="contentwrapper">
- <?php if($this->name =='Posts'):?>
+ <?php if($this->name =='Posts' || $this->name =='Postcats'):?>
 <div id="contentcolumn">
    <?php else:?>
   <div id="contentcolumn2">  <?php endif ?>
@@ -94,13 +94,16 @@
 
 
 			<?php echo $this->element('loginform');?>
-			<?php if($this->name =='Posts'):?>
+			<?php if($this->name =='Posts' || $this->name =='Postcats'):?>
 	  <?php echo $this->element('postcat');?>
+	  <?php endif ?>
+	  	<?php if($this->name =='Threads' || $this->name =='Forumcats'):?>
+	  <?php echo $this->element('forumcat');?>
 	  <?php endif ?>
 	   <?php echo $this->element('online');?>
 </section>
 
- <?php if($this->name =='Posts'):?>
+ <?php if($this->name =='Posts' || $this->name =='Postcats'):?>
 
 <section id="rightcolumn"> <?php echo $this->element('commentswidget');?></div><?php endif ?>   </section >
 

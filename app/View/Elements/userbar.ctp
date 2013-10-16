@@ -24,6 +24,7 @@
  <li>Category management
   <ul>
   <li><?php echo $this->Html->link('Posts', array('controller'=>'postcats', 'action'=>'admin_index', 'admin'=>true)); ?> </li>
+  <li><?php echo $this->Html->link('Forum', array('controller'=>'forumcats', 'action'=>'admin_index', 'admin'=>true)); ?> </li>
  </ul>
  </li>
  <?php endif ?>

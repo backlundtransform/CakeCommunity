@@ -1,6 +1,3 @@
-
-
-
 <div class='tables'>Categories</div>
         <div class='innertube'>  <?php $Categorylist = $this->requestAction('Postcats/index');
 
@@ -25,7 +22,7 @@
 
 
 
-	          <?php if ($parent==$value['Postcat']['parent_id']): ?>
+	          <?php if (isset($parent)==$value['Postcat']['parent_id']): ?>
 
 	 	<?php echo $this->Html->image('cat_arrow.png'); ?><?php echo $this->Html->link($value['Postcat']['name'], array('controller' => 'postcats', 'action' => 'view', 'admin' => false, $value['Postcat']['id'])); ?>  <br>
 
@@ -39,6 +36,3 @@
 	<p>
 
 	</div></div>
-
-
-

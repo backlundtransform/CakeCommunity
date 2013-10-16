@@ -16,7 +16,7 @@
 		<?php echo $this->Form->input('content', array('rows' => '15', 'cols' => '100', 'class'=>'ckeditor')); ?></br>
 		<?php echo $this->Form->input('cat', array(
                                       'type' => 'select',
-                                      //'options' => $category,
+                                     'options' => $category,
                                       'selected' => 1
                                   ));
 		

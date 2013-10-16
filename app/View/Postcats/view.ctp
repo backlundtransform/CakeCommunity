@@ -2,6 +2,11 @@
 <?php
 
 
+
+
+
+
+
 if ($current_user['roles'] == 'admin') {
 	    
 	echo $this->Html->link(__('Submit'), array('controller'=> 'Posts', 'action' => 'add'), array('Class' => 'Buttons'));
@@ -40,12 +45,12 @@ Views: <?php echo $post['views']; ?> | Added by: <?php
 
 
 
-echo $this->Html->link($addedby[$key]['User']['name'], array('controller' => 'users', 'action' => 'view', $addedby[$key]['User']['id'])); ?>
+echo $this->Html->link($addedby[$key]['User']['username'], array('controller' => 'users', 'action' => 'view', $addedby[$key]['User']['id'])); ?>
 
-| Creation time:   <?php echo $post['created']; ?>  |   <?php
+| Creation time:   <?php echo $this->Time->timeAgoInWords($post['created']); ?>  |   <?php
 
 
-echo $this->Html->link('Comments :'.count($commentnumber), array( 'action' => 'view', $post['id'])); ?>
+echo $this->Html->link('Comments :'.count($commentnumber), array( 'controller' => 'Posts',  'action' => 'view', $post['id'])); ?>
 
 
 
@@ -65,7 +70,25 @@ echo $this->Html->link('Comments :'.count($commentnumber), array( 'action' => 'v
 		
 			 			?><br />
 	<?php endforeach; ?>
+	<p>
 	</table>
 <?php endif; ?>
+	<?php
+	echo $this->Paginator->counter(array(
+	'format' => __('Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}')
+	));
+	?>	</p>
+	<div class="paging">
+	<?php
+	
+		if ($this->Paginator->hasPage(2)){
+
+			echo $this->Paginator->prev('< ' . __('previous'), array(), null, array('class' => 'prev disabled'));
+			echo $this->Paginator->numbers(array('separator' => ''));
+			echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));
+		
+			}
+	?></div>
+
 
 	

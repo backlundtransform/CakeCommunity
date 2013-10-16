@@ -28,7 +28,11 @@
 	<ul>
 		<li><?php echo $this->Html->link(__('Edit Answer'), array('action' => 'edit', $threadsanswer['Thread']['id'])); ?> </li>
 		<li><?php echo $this->Form->postLink(__('Delete Answer'), array('action' => 'delete', $threadsanswer['Thread']['id']), null, __('Are you sure you want to delete # %s?', $threadsanswer['Thread']['id'])); ?> </li>
+<<<<<<< HEAD
+		<li><?php echo $this->Html->link(__('List Answer'), array('action' => 'index')); ?> </li>
+=======
 		<li><?php echo $this->Html->link(__('List Answer''), array('action' => 'index')); ?> </li>
+>>>>>>> 9a68e4b438b5fa86b48466ae879b206e2030f595
 		<li><?php echo $this->Html->link(__('New Answer'), array('action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Users'), array('controller' => 'users', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New User'), array('controller' => 'users', 'action' => 'add')); ?> </li>

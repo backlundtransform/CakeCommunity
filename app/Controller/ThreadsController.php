@@ -1,9 +1,7 @@
 <?php
 App::uses('AppController', 'Controller');
 /**
- * Posts Controller
- *
- * @property Post $Post
+ 
  */
 
 class ThreadsController extends AppController {
@@ -24,6 +22,9 @@ class ThreadsController extends AppController {
                      
                      } else{
                      
+
+                         $this->Auth->allow('index', 'view', 'featured');
+
                          $this->Auth->allow('index', 'view', 'search', 'featured');
 
 
@@ -34,37 +35,7 @@ class ThreadsController extends AppController {
 	
      }   
      
-     function search()
-{
-      	$this->ban_check();
-	
-		$this->Thread->recursive = 0;
-
-
-               $this->paginate = array('order' => 'created DESC');
-
-
-
-		$this->set('threads', $this->paginate());
-		             	
-
-  
-
-    if (!empty($this->data)) {
-        $searchstr = $this->data['Thread']['search'];
-        $this->set('searchstring', $this->data['Thread']['search']);
-        $conditions = array(
-            'conditions' => array(
-            'or' => array(
-                "Thread.title LIKE" => "%$searchstr%",
-                "Thread.content LIKE" => "%$searchstr%"
-            )
-            )
-        );
-        $this->set('Threads', $this->Thread->find('all', $conditions));
-    }
-}
-
+ 
 
 
 
@@ -126,12 +97,23 @@ public function lock_thread($id = null, $boolean = null) {
                                       } }
 
 
+
+
+
+
+
+                                     
+                                     
+
+
+
 	public function index() {
 		$this->ban_check();
 
 		$this->Thread->recursive = 1;
  	
 
+                     
 
                      
 
@@ -252,9 +234,9 @@ public function featured() {
 		$users = $this->Thread->User->find('list');
 		$thread = $this->Thread->find('list');
 		$this->set(compact('users', 'thread'));
-			//$category = $this->Thread->Forumcat->generateTreeList(null, null, null,"_");
+			$category = $this->Thread->Forumcat->generateTreeList(null, null, null,"_");
 	
-		//$this->set(compact('category'));
+		$this->set(compact('category'));
 		
 	}
 

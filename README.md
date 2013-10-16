@@ -1,4 +1,4 @@
 CakeCommunity
 =============
 
-Community Blog/Forum Application
+Community Blog/Forum Application CakePHP
